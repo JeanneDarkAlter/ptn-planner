@@ -975,6 +975,13 @@ function Upgrading () {
           return null
         })}
       </div>
+      <div style={{ textAlign: 'center' }}>
+        <p>
+          This site is not affiliated with AISNO Games. All images and data
+          belongs to their respective owners.
+        </p>
+        <p>Made by JeanneDarkAlter.</p>
+      </div>
     </div>
   )
 }
