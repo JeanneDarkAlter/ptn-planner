@@ -1,0 +1,485 @@
+[
+    {
+        "id": "MBCC-S-028",
+        "img": "https://patchwiki.biligame.com/images/wqmt/thumb/1/15/ra8vb7z6smm4m7fl156fvyv1ecll2rl.png/150px-%E5%8D%93%E5%A8%85.png",
+        "role": "Fury",
+        "name": "Zoya",
+        "rank": "S",
+        "phases": [
+            [
+                [
+                    "M-Crystal",
+                    50200
+                ],
+                [
+                    "DisCoin",
+                    21850
+                ]
+            ],
+            [
+                [
+                    "Fury I",
+                    18
+                ],
+                [
+                    "Red II",
+                    16
+                ],
+                [
+                    "Gel II",
+                    8
+                ],
+                [
+                    "DisCoin",
+                    36000
+                ]
+            ],
+            [
+                [
+                    "M-Crystal",
+                    201850
+                ],
+                [
+                    "DisCoin",
+                    107100
+                ]
+            ],
+            [
+                [
+                    "Fury II",
+                    18
+                ],
+                [
+                    "Red III",
+                    16
+                ],
+                [
+                    "Gel III",
+                    8
+                ],
+                [
+                    "DisCoin",
+                    120000
+                ]
+            ],
+            [
+                [
+                    "M-Crystal",
+                    575200
+                ],
+                [
+                    "DisCoin",
+                    272050
+                ]
+            ],
+            [
+                [
+                    "Fury III",
+                    30
+                ],
+                [
+                    "Red IV",
+                    28
+                ],
+                [
+                    "Gel IV",
+                    15
+                ],
+                [
+                    "DisCoin",
+                    560000
+                ]
+            ],
+            [
+                [
+                    "M-Crystal",
+                    436300
+                ],
+                [
+                    "DisCoin",
+                    176500
+                ]
+            ],
+            [
+                [
+                    "M-Crystal",
+                    482650
+                ],
+                [
+                    "DisCoin",
+                    192750
+                ]
+            ],
+            [
+                [
+                    "M-Crystal",
+                    775650
+                ],
+                [
+                    "DisCoin",
+                    311600
+                ]
+            ]
+        ],
+        "skills": [
+            [
+                [
+                    "Module I",
+                    6
+                ],
+                [
+                    "Twilight I",
+                    6
+                ],
+                [
+                    "DisCoin",
+                    4000
+                ]
+            ],
+            [
+                [
+                    "Module I",
+                    16
+                ],
+                [
+                    "Twilight I",
+                    10
+                ],
+                [
+                    "DisCoin",
+                    6000
+                ]
+            ],
+            [
+                [
+                    "Module II",
+                    10
+                ],
+                [
+                    "Twilight II",
+                    6
+                ],
+                [
+                    "DisCoin",
+                    8600
+                ]
+            ],
+            [
+                [
+                    "Module II",
+                    16
+                ],
+                [
+                    "Twilight II",
+                    10
+                ],
+                [
+                    "DisCoin",
+                    12800
+                ]
+            ],
+            [
+                [
+                    "Module III",
+                    6
+                ],
+                [
+                    "Twilight III",
+                    6
+                ],
+                [
+                    "DisCoin",
+                    19200
+                ]
+            ],
+            [
+                [
+                    "Module III",
+                    10
+                ],
+                [
+                    "Twilight III",
+                    8
+                ],
+                [
+                    "DisCoin",
+                    30000
+                ]
+            ],
+            [
+                [
+                    "Module IV",
+                    8
+                ],
+                [
+                    "Twilight IV",
+                    4
+                ],
+                [
+                    "DisCoin",
+                    86000
+                ],
+                [
+                    "Corpses",
+                    1
+                ]
+            ],
+            [
+                [
+                    "Module IV",
+                    10
+                ],
+                [
+                    "Twilight IV",
+                    6
+                ],
+                [
+                    "DisCoin",
+                    175000
+                ],
+                [
+                    "Corpses",
+                    2
+                ]
+            ],
+            [
+                [
+                    "Module IV",
+                    15
+                ],
+                [
+                    "Twilight IV",
+                    8
+                ],
+                [
+                    "DisCoin",
+                    260000
+                ],
+                [
+                    "Corpses",
+                    2
+                ],
+                [
+                    "Crystal",
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "id": "MBCC-S-014",
+        "img": "https://patchwiki.biligame.com/images/wqmt/thumb/3/3a/2pddu5uc85a1fys4t2dj5ijvzmwbq23.png/150px-%E9%BB%9B%E4%BC%A6.png",
+        "role": "Fury",
+        "name": "Deren",
+        "rank": "S",
+        "phases": [
+            [
+                [
+                    "Fury I",
+                    18
+                ],
+                [
+                    "Red II",
+                    16
+                ],
+                [
+                    "Gel II",
+                    8
+                ],
+                [
+                    "DisCoin",
+                    36000
+                ]
+            ],
+            [
+                [
+                    "Fury II",
+                    18
+                ],
+                [
+                    "Red III",
+                    16
+                ],
+                [
+                    "Gel III",
+                    8
+                ],
+                [
+                    "DisCoin",
+                    120000
+                ]
+            ],
+            [
+                [
+                    "Fury III",
+                    30
+                ],
+                [
+                    "Red IV",
+                    28
+                ],
+                [
+                    "Gel IV",
+                    15
+                ],
+                [
+                    "DisCoin",
+                    560000
+                ]
+            ]
+        ],
+        "skills": [
+            [
+                [
+                    "Module I",
+                    6
+                ],
+                [
+                    "Twilight I",
+                    6
+                ],
+                [
+                    "DisCoin",
+                    4000
+                ]
+            ],
+            [
+                [
+                    "Module I",
+                    16
+                ],
+                [
+                    "Twilight I",
+                    10
+                ],
+                [
+                    "DisCoin",
+                    6000
+                ]
+            ],
+            [
+                [
+                    "Module II",
+                    10
+                ],
+                [
+                    "Twilight II",
+                    6
+                ],
+                [
+                    "DisCoin",
+                    8600
+                ]
+            ],
+            [
+                [
+                    "Module II",
+                    16
+                ],
+                [
+                    "Twilight II",
+                    10
+                ],
+                [
+                    "DisCoin",
+                    12800
+                ]
+            ],
+            [
+                [
+                    "Module III",
+                    6
+                ],
+                [
+                    "Twilight III",
+                    6
+                ],
+                [
+                    "DisCoin",
+                    19200
+                ]
+            ],
+            [
+                [
+                    "Module III",
+                    10
+                ],
+                [
+                    "Twilight III",
+                    8
+                ],
+                [
+                    "DisCoin",
+                    30000
+                ]
+            ],
+            [
+                [
+                    "Module IV",
+                    8
+                ],
+                [
+                    "Twilight IV",
+                    4
+                ],
+                [
+                    "DisCoin",
+                    86000
+                ],
+                [
+                    "Corpses",
+                    1
+                ]
+            ],
+            [
+                [
+                    "Module IV",
+                    10
+                ],
+                [
+                    "Twilight IV",
+                    6
+                ],
+                [
+                    "DisCoin",
+                    175000
+                ],
+                [
+                    "Corpses",
+                    2
+                ]
+            ],
+            [
+                [
+                    "Module IV",
+                    15
+                ],
+                [
+                    "Twilight IV",
+                    8
+                ],
+                [
+                    "DisCoin",
+                    260000
+                ],
+                [
+                    "Corpses",
+                    2
+                ],
+                [
+                    "Crystal",
+                    1
+                ]
+            ]
+        ]
+    },
+    {
+        "id": "MBCC-S-NOX",
+        "img": "https://patchwiki.biligame.com/images/wqmt/thumb/b/be/a82wtguapm8peuzl9g844buiqzlpzkf.png/150px-%E8%AF%BA%E5%85%8B%E6%96%AF.png",
+        "role": "Fury",
+        "name": "NOX",
+        "rank": "S",
+        "phases": [],
+        "skills": ""
+    }
+]

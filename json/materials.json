@@ -1,0 +1,231 @@
+[
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/1/15/n0anzj97uzooo43qx033ran5mx7e79u.png",
+    "name": "DisCoin",
+    "rarity": "PC-CR",
+    "stages": "QUQU",
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general",
+    "craftable": null
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/6/67/9lbhmpqgl86dadwvhe2t4mj3yxiougz.png",
+    "name": "M-Crystal",
+    "rarity": "PC-CR",
+    "stages": "QUQU",
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general",
+    "craftable": null
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/7/77/fni34ahsvde44inhh32xgj7pnv4vfpi.png",
+    "name": "Module I",
+    "rarity": "PC-LR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "skills",
+    "craftable": null
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/9/9e/49s7lv9x4r4nn8f14mdkknsuquh5cot.png",
+    "name": "Module II",
+    "rarity": "PC-LR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "skills",
+    "craftable": "Module I",
+    "canCraft": 0,
+    "mustCraft": 0
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/f/fe/btwcl6ba7huewijirol8r5ofvabe1qx.png",
+    "name": "Module III",
+    "rarity": "PC-AR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "skills",
+    "craftable": "Module II",
+    "canCraft": 0,
+    "mustCraft": 0
+
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/f/f8/4fch0mgepmvt5iqc4w0a2qxkic76jaq.png",
+    "name": "Module IV",
+    "rarity": "PC-GR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "skills",
+    "craftable": "Module III",
+    "canCraft": 0,
+    "mustCraft": 0
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/1/1a/n9zntn0h9myrfysmo5n9d43do0v3598.png",
+    "name": "Corpses",
+    "rarity": "PC-GR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "skills"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/f/f8/qk248ax9rmidz4e0cigbmw47uhf3s4b.png",
+    "name": "Furor",
+    "rarity": "PC-GR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "skills"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/0/09/t7wba3rs0l7xbdtfoorrknua3u0hcs9.png",
+    "name": "Crystal",
+    "rarity": "PC-ER",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "skills"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/2/29/skbwq9i4ypfgzcat7hck04rzxux7amw.png",
+    "name": "Fury I",
+    "rarity": "PC-CR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "phaseup"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/a/a9/27bxylqzaqjxive8e9f7v9afqptr4on.png",
+    "name": "Fury II",
+    "rarity": "PC-AR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "phaseup"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/3/31/70fhp1eey9ij4rlg9kjrsva80idge7u.png",
+    "name": "Fury III",
+    "rarity": "PC-AR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "phaseup"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/4/4b/2pe9g8pglh1mrqjpkr5ud0b4mza21gd.png",
+    "name": "Red I",
+    "rarity": "PC-LR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/6/6b/j4hqafop4y5t17kicykd9vowcsix3x1.png",
+    "name": "Red II",
+    "rarity": "PC-CR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/3/36/i8m8erfw06pempwwhx6z9t8ad26hur0.png",
+    "name": "Red III",
+    "rarity": "PC-AR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/8/8b/rsnbqbzbyiilugkq82n89nu28y2ohcw.png",
+    "name": "Red IV",
+    "rarity": "PC-GR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/4/4e/jlmnahwacgnd6jpuoyza6850kvz8eqx.png",
+    "name": "Gel I",
+    "rarity": "PC-LR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/3/30/j4c9q3nfn5okk8dsetdqb54ygeb6w42.png",
+    "name": "Gel II",
+    "rarity": "PC-CR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/7/74/tc9fz4k5x436kr0abfxht8ukf2eieg8.png",
+    "name": "Gel III",
+    "rarity": "PC-AR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/a/a5/p3ovh0ikoeh2dkdvqsg7n4luz9gjbok.png",
+    "name": "Gel IV",
+    "rarity": "PC-GR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/9/95/kfh35k9cb28uyphnn24o41xdmntllne.png",
+    "name": "Twilight I",
+    "rarity": "PC-LR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/5/59/bmhjotar03e084lvrwwzu12334g3tfs.png",
+    "name": "Twilight II",
+    "rarity": "PC-CR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/7/7c/hvzol2grovxsn7mpgmvyybug476elsp.png",
+    "name": "Twilight III",
+    "rarity": "PC-AR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/1/1d/1rs2wlx06spyuf9e7ul11l62hqtfi0j.png",
+    "name": "Twilight IV",
+    "rarity": "PC-GR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "general"
+  }
+]
