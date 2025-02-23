@@ -325,6 +325,7 @@ function CharUpgrade ({ ...character }) {
 
   const deleteChar = () => {
     console.log(upgrade)
+    console.log(character)
     for (
       let i = parseInt(upgrade.currPhase);
       i < parseInt(upgrade.goalPhase);
@@ -398,11 +399,14 @@ function CharUpgrade ({ ...character }) {
     setMaterials(materials)
 
     let upgrades = JSON.parse(localStorage.getItem('upgrade'))
+    console.log('BBB')
     console.log(upgrades)
     for (let i = 0; i < upgrades.length; i++) {
-      if (upgrades[i].name === upgrade.name) {
+      console.log(upgrades[i])
+      if (upgrades[i].id === character.id) {
+        console.log('AAA')
         console.log(upgrades[i].name)
-        console.log(upgrade.name)
+        console.log(character.name)
         upgrades.splice(i, 1)
         break
       }
@@ -440,7 +444,6 @@ function CharUpgrade ({ ...character }) {
               backgroundColor: 'black',
               border: '2px solid ' + check()
             }}
-            onClick={console.log(this)}
           >
             <div
               height={100}

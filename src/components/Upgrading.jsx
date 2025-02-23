@@ -395,12 +395,21 @@ function Upgrading () {
     <div className='container'>
       {/*NOTE: выбор персонажей для прокачки */}
       <Popup
-        trigger={<button>Add character</button>}
+        trigger={
+          <button
+            onClick={() => {
+              setDisplaying(chars)
+              console.log('A')
+            }}
+          >
+            Add character
+          </button>
+        }
         modal
         nested
         position='center center'
         lockScroll={true}
-        closeOnDocumentClick={false}
+        onOpen={() => setDisplaying(chars)}
       >
         {close => (
           <div
@@ -420,7 +429,11 @@ function Upgrading () {
               <div
                 style={{
                   backgroundColor: 'gray',
-                  width: 'fit-content'
+                  width: 'fit-content',
+                  paddingLeft: '5px',
+                  paddingBottom: '5px',
+                  borderTopLeftRadius: '5px',
+                  borderBottomLeftRadius: '5px'
                 }}
               >
                 <label
@@ -591,7 +604,14 @@ function Upgrading () {
                   </span>
                 </label>
               </div>
-              <div style={{ backgroundColor: 'gray', width: 'fit-content' }}>
+              <div
+                style={{
+                  backgroundColor: 'gray',
+                  width: 'fit-content',
+                  borderTopRightRadius: '5px',
+                  borderBottomRightRadius: '5px'
+                }}
+              >
                 <label
                   className='checkbox-btn'
                   title='released'
@@ -601,6 +621,17 @@ function Upgrading () {
                   <span>Released</span>
                 </label>
               </div>
+              {/* <div>
+                <button
+                  style={{ marginLeft: '250%', fontSize: '20px' }}
+                  onClick={() => {
+                    setDisplaying(chars)
+                    close()
+                  }}
+                >
+                  &#10006;
+                </button>
+              </div> */}
             </div>
             {
               //chars -> displaying
@@ -630,17 +661,6 @@ function Upgrading () {
                 }
               })
             }
-            <div>
-              <button
-                style={{ marginTop: '10px' }}
-                onClick={() => {
-                  setDisplaying(chars)
-                  close()
-                }}
-              >
-                Close
-              </button>
-            </div>
           </div>
         )}
       </Popup>
