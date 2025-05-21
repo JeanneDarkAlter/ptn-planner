@@ -10,16 +10,17 @@ import mats from '../json/materials.json'
 export const UpgradeContext = createContext(null)
 
 function Upgrading () {
+  // localStorage.clear()
   const getMats = () => {
     if (localStorage.getItem('materials') === null) {
       let materials = []
       for (let i = 0; i < mats.length; i++) {
-        let material = {
-          name: mats[i].name,
-          needed: mats[i].needed,
-          amount: mats[i].amount
-        }
-        materials.push(material)
+        // let material = {
+        //   name: mats[i].name,
+        //   needed: mats[i].needed,
+        //   amount: mats[i].amount
+        // }
+        materials.push(mats[i])
       }
       // console.log(materials);
       localStorage.setItem('materials', JSON.stringify(materials))
@@ -31,17 +32,33 @@ function Upgrading () {
       let materials = []
       let m = JSON.parse(localStorage.getItem('materials'))
       for (let i = 0; i < m.length; i++) {
-        let material = {
-          name: m[i].name,
-          needed: m[i].needed,
-          amount: m[i].amount
-        }
-        materials.push(material)
+        // let material = {
+        //   name: m[i].name,
+        //   needed: m[i].needed,
+        //   amount: m[i].amount
+        // }
+        materials.push(m[i])
       }
       // console.log(materials);
 
       // let materials = JSON.parse(localStorage.getItem("materials"));
+      console.log(materials)
+
       if (materials.length < mats.length) {
+        for (let i = 0; i < mats.length; i++) {
+          if (!materials.find(m => m.name === mats[i].name)) {
+            materials.splice(i, 0, mats[i])
+          }
+        }
+        for (let i = 0; i < materials.length; i++) {
+          if (!mats.find(m => m.name === materials[i].name)) {
+            materials.splice(i, 1)
+          }
+        }
+        localStorage.setItem('materials', JSON.stringify(materials))
+        return materials
+      }
+      if (materials.length > mats.length) {
         for (let i = 0; i < mats.length; i++) {
           if (!materials.find(m => m.name === mats[i].name)) {
             materials.splice(i, 0, mats[i])
@@ -333,62 +350,100 @@ function Upgrading () {
       let names = mats.filter(m => m.name.includes(mats[i].name.split(' ')[0]))
       if (names.length === 4) {
         // if (materials[i].amount >= materials[i].needed) {
-        mats[i + 1].canCraft = Math.min(
-          Math.floor((materials[i].amount - materials[i].needed) / 3),
-          materials[i + 1].needed -
-            materials[i + 1].amount +
-            (materials[i + 2].needed - materials[i + 2].amount) * 3 +
-            (materials[i + 3].needed - materials[i + 3].amount) * 9
-        )
-        // }
-        // if (parseInt(materials[i + 1].amount) + parseInt(mats[i + 1].canCraft) >= materials[i + 1].needed) {
-        mats[i + 2].canCraft = Math.min(
-          Math.floor(
-            (parseInt(materials[i + 1].amount) +
-              parseInt(mats[i + 1].canCraft) -
-              materials[i + 1].needed) /
-              3
+        mats[i + 1].canCraft = Math.max(
+          Math.min(
+            Math.floor((materials[i].amount - materials[i].needed) / 3),
+            materials[i + 1].needed -
+              materials[i + 1].amount +
+              Math.max(
+                (materials[i + 2].needed - materials[i + 2].amount) * 3,
+                0
+              ) +
+              Math.max(
+                (materials[i + 3].needed - materials[i + 3].amount) * 9,
+                0
+              )
           ),
-          materials[i + 2].needed -
-            materials[i + 2].amount +
-            (materials[i + 3].needed - materials[i + 3].amount) * 3
+          0
         )
-        // console.log(mats[i + 2].canCraft + " C");
-        // }
-        // if (parseInt(materials[i + 2].amount) + parseInt(mats[i + 2].canCraft) >= materials[i + 2].needed) {
-        mats[i + 3].canCraft = Math.min(
-          Math.floor(
-            (parseInt(materials[i + 2].amount) +
-              parseInt(mats[i + 2].canCraft) -
-              materials[i + 2].needed) /
-              3
+
+        mats[i + 2].canCraft = Math.max(
+          Math.min(
+            Math.floor(
+              (parseInt(materials[i + 1].amount) +
+                parseInt(mats[i + 1].canCraft) -
+                materials[i + 1].needed) /
+                3
+            ),
+            materials[i + 2].needed -
+              materials[i + 2].amount +
+              Math.max(
+                (materials[i + 3].needed - materials[i + 3].amount) * 3,
+                0
+              )
           ),
-          materials[i + 3].needed - materials[i + 3].amount
+          0
         )
-        // console.log(mats[i + 3].canCraft + " D");
-        // }
+
+        mats[i + 3].canCraft = Math.max(
+          Math.min(
+            Math.floor(
+              (parseInt(materials[i + 2].amount) +
+                parseInt(mats[i + 2].canCraft) -
+                materials[i + 2].needed) /
+                3
+            ),
+            Math.max(materials[i + 3].needed - materials[i + 3].amount, 0)
+          ),
+          0
+        )
+
+        let json = JSON.parse(localStorage.getItem('materials'))
+        let mat_ii = json.findIndex(obj => obj.name === mats[i + 1].name)
+        json[mat_ii].canCraft = mats[i + 1].canCraft
+        let mat_iii = json.findIndex(obj => obj.name === mats[i + 2].name)
+        json[mat_iii].canCraft = mats[i + 2].canCraft
+        let mat_iv = json.findIndex(obj => obj.name === mats[i + 3].name)
+        json[mat_iv].canCraft = mats[i + 3].canCraft
+        localStorage.setItem('materials', JSON.stringify(json))
       }
       if (names.length === 3) {
-        mats[i + 1].canCraft = Math.min(
-          Math.floor((materials[i].amount - materials[i].needed) / 3),
-          materials[i + 1].needed -
-            materials[i + 1].amount +
-            (materials[i + 2].needed - materials[i + 2].amount) * 3 +
-            (materials[i + 3].needed - materials[i + 3].amount) * 9
-        )
-        mats[i + 2].canCraft = Math.min(
-          Math.floor(
-            (parseInt(materials[i + 1].amount) +
-              parseInt(mats[i + 1].canCraft) -
-              materials[i + 1].needed) /
-              3
+        console.log(mats[i], mats[i + 1], mats[i + 2])
+
+        mats[i + 1].canCraft = Math.max(
+          Math.min(
+            Math.floor((materials[i].amount - materials[i].needed) / 3),
+            materials[i + 1].needed -
+              materials[i + 1].amount +
+              Math.max(
+                (materials[i + 2].needed - materials[i + 2].amount) * 3,
+                0
+              )
           ),
-          materials[i + 2].needed -
-            materials[i + 2].amount +
-            (materials[i + 3].needed - materials[i + 3].amount) * 3
+          0
         )
+        mats[i + 2].canCraft = Math.max(
+          Math.min(
+            Math.floor(
+              (parseInt(materials[i + 1].amount) +
+                parseInt(mats[i + 1].canCraft) -
+                materials[i + 1].needed) /
+                3
+            ),
+            Math.max(materials[i + 2].needed - materials[i + 2].amount, 0)
+          ),
+          0
+        )
+        let json = JSON.parse(localStorage.getItem('materials'))
+        let mat_ii = json.findIndex(obj => obj.name === mats[i + 1].name)
+        json[mat_ii].canCraft = mats[i + 1].canCraft
+        let mat_iii = json.findIndex(obj => obj.name === mats[i + 2].name)
+        json[mat_iii].canCraft = mats[i + 2].canCraft
+        localStorage.setItem('materials', JSON.stringify(json))
       }
     }
+    // console.log('CRAFTING CALCULATIONS COMPLETE')
+    // console.log(JSON.parse(localStorage.getItem('materials')))
   }
 
   return (
@@ -901,7 +956,7 @@ function Upgrading () {
       </div>
 
       {/*NOTE: инвентарь*/}
-      <h2>Inventory</h2>
+      {/* <h2>Inventory</h2>
       <div>
         <label htmlFor='needed'>
           <input
@@ -921,7 +976,7 @@ function Upgrading () {
           />
           Only missing materials
         </label>
-      </div>
+      </div> */}
       <h3>General</h3>
       <div id='general'>
         {
@@ -995,6 +1050,23 @@ function Upgrading () {
           return null
         })}
       </div>
+      <h3>Chests</h3>
+      <div id='chests'>
+        {mats.map(material => {
+          if (material.purpose === 'chest') {
+            return (
+              <UpgradeContext.Provider
+                value={{ setMaterials }}
+                key={material.name}
+              >
+                <Material key={material.name} {...material} />
+              </UpgradeContext.Provider>
+            )
+          }
+          return null
+        })}
+      </div>
+
       <div style={{ textAlign: 'center' }}>
         <p>
           This site is not affiliated with AISNO Games. All images and data

@@ -32,7 +32,7 @@
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/9/9e/49s7lv9x4r4nn8f14mdkknsuquh5cot.png",
     "name": "Module II",
-    "rarity": "PC-LR",
+    "rarity": "PC-CR",
     "stages": null,
     "needed": 0,
     "amount": 0,
@@ -109,7 +109,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/a/a9/27bxylqzaqjxive8e9f7v9afqptr4on.png",
@@ -121,19 +122,21 @@
     "purpose": "phaseup",
     "craftable": "Fury I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/31/70fhp1eey9ij4rlg9kjrsva80idge7u.png",
     "name": "Fury III",
-    "rarity": "PC-AR",
+    "rarity": "PC-GR",
     "stages": null,
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
     "craftable": "Fury II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/a/a1/9djn7dbq5mbtwg5ja2gil6cmbzc17ae.png",
@@ -143,7 +146,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/d/dd/cs0dcdij1fzj9x135rehzbfxqjk39g7.png",
@@ -155,19 +159,21 @@
     "purpose": "phaseup",
     "craftable": "Catalyst I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/4/40/qnm8kxcoin1ab0iqgcwzdla1dpg9b2k.png",
     "name": "Catalyst III",
-    "rarity": "PC-AR",
+    "rarity": "PC-GR",
     "stages": null,
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
     "craftable": "Catalyst II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/c/cc/ewlcqwsgn3srdjyw7szvuxukvrv1lhu.png",
@@ -177,7 +183,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/6/6d/1731cs02pk0wns5a52e1wx5m46cp6cn.png",
@@ -189,19 +196,21 @@
     "purpose": "phaseup",
     "craftable": "Endura I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/0/0e/cxqwud4ck3vy0iq1bbtq0n4y88nuu7e.png",
     "name": "Endura III",
-    "rarity": "PC-AR",
+    "rarity": "PC-GR",
     "stages": null,
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
     "craftable": "Endura II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/b/b7/dj56n2pol36n2uf322ujzddtbk1rzx4.png",
@@ -211,7 +220,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/6/6f/ozs326cvvnhjhsyjfxm5zz3w5nr2q5s.png",
@@ -223,19 +233,21 @@
     "purpose": "phaseup",
     "craftable": "Arcane I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/6/66/i033ysdzatb26rw6ta2lz0rh3vg6dvz.png",
     "name": "Arcane III",
-    "rarity": "PC-AR",
+    "rarity": "PC-GR",
     "stages": null,
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
     "craftable": "Arcane II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/8/8a/pdb4wxw3ww61znhbi0blbnl529evpt4.png",
@@ -245,7 +257,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/c/cc/5bkbdo5h4mfjm9r7skn1j22a07t1l7g.png",
@@ -257,19 +270,21 @@
     "purpose": "phaseup",
     "craftable": "Reticle I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/36/gyibkj97d0f2zci7id4wzms5s4vbi3d.png",
     "name": "Reticle III",
-    "rarity": "PC-AR",
+    "rarity": "PC-GR",
     "stages": null,
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
     "craftable": "Reticle II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/2/29/sb5oai1uxu3e2w85oazry6jo3et8t9i.png",
@@ -279,7 +294,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/1/1a/pq9lgndluy5fyenawp75al66oxoma1n.png",
@@ -291,19 +307,21 @@
     "purpose": "phaseup",
     "craftable": "Umbra I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/0/07/mc7nb218pehjrm5t6lnq2zxepl10q49.png",
     "name": "Umbra III",
-    "rarity": "PC-AR",
+    "rarity": "PC-GR",
     "stages": null,
     "needed": 0,
     "amount": 0,
     "purpose": "phaseup",
     "craftable": "Umbra II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/4/4b/2pe9g8pglh1mrqjpkr5ud0b4mza21gd.png",
@@ -313,7 +331,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/6/6b/j4hqafop4y5t17kicykd9vowcsix3x1.png",
@@ -325,7 +344,8 @@
     "purpose": "general",
     "craftable": "Red I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/36/i8m8erfw06pempwwhx6z9t8ad26hur0.png",
@@ -337,7 +357,8 @@
     "purpose": "general",
     "craftable": "Red II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/8/8b/rsnbqbzbyiilugkq82n89nu28y2ohcw.png",
@@ -349,7 +370,8 @@
     "purpose": "general",
     "craftable": "Red III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/4/4e/jlmnahwacgnd6jpuoyza6850kvz8eqx.png",
@@ -359,7 +381,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/30/j4c9q3nfn5okk8dsetdqb54ygeb6w42.png",
@@ -371,7 +394,8 @@
     "purpose": "general",
     "craftable": "Gel I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/7/74/tc9fz4k5x436kr0abfxht8ukf2eieg8.png",
@@ -383,7 +407,8 @@
     "purpose": "general",
     "craftable": "Gel II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/a/a5/p3ovh0ikoeh2dkdvqsg7n4luz9gjbok.png",
@@ -395,7 +420,8 @@
     "purpose": "general",
     "craftable": "Gel III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/9/95/kfh35k9cb28uyphnn24o41xdmntllne.png",
@@ -405,7 +431,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/5/59/bmhjotar03e084lvrwwzu12334g3tfs.png",
@@ -417,7 +444,8 @@
     "purpose": "general",
     "craftable": "Twilight I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/7/7c/hvzol2grovxsn7mpgmvyybug476elsp.png",
@@ -429,7 +457,8 @@
     "purpose": "general",
     "craftable": "Twilight II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/1/1d/1rs2wlx06spyuf9e7ul11l62hqtfi0j.png",
@@ -441,7 +470,8 @@
     "purpose": "general",
     "craftable": "Twilight III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/6/63/04m5pxi9hfttjno8yc3bcbwerndit9c.png",
@@ -451,7 +481,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/8/81/3lolzbpajg7q9lfbi8s54upv0aciyyd.png",
@@ -463,7 +494,8 @@
     "purpose": "general",
     "craftable": "Horn I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/d/d6/iz5f3t8vtz14tuxbuvpdb4bdoqrl04f.png",
@@ -475,7 +507,8 @@
     "purpose": "general",
     "craftable": "Horn II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/f/f2/tt5d9pvu5huicrgmxa7054if935cw0b.png",
@@ -487,7 +520,8 @@
     "purpose": "general",
     "craftable": "Horn III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/c/c5/f1wujje8eea27yvi94yn2yp5a402vok.png",
@@ -497,7 +531,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/6/66/5nzj7uk1h2zsz3vnar4kp9y7bcj1g2k.png",
@@ -509,7 +544,8 @@
     "purpose": "general",
     "craftable": "Ice I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/5/58/p4wlkabz3lv0xc02n4j4y3e6rvwd8iv.png",
@@ -521,7 +557,8 @@
     "purpose": "general",
     "craftable": "Ice II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/36/kkurda988k9sg5sct6c4ebzhthf4kbm.png",
@@ -533,7 +570,8 @@
     "purpose": "general",
     "craftable": "Ice III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/c/c5/1lmlui4mz0y3pzk4fgtv73scscpyr3w.png",
@@ -543,7 +581,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/b/b8/4b412g721j13754lbip1q13x817tn1y.png",
@@ -555,7 +594,8 @@
     "purpose": "general",
     "craftable": "Tear I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/6/6d/3lzb3fkiawrq8cvh7ed35vstdj4jbdt.png",
@@ -567,7 +607,8 @@
     "purpose": "general",
     "craftable": "Tear II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/3d/ddzo6ay309vpv53t1q5lwa5ips3slpp.png",
@@ -579,7 +620,8 @@
     "purpose": "general",
     "craftable": "Tear III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/f/f0/rhc1u3kls1tozr47wc9nhlcz0qyl9fn.png",
@@ -589,7 +631,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/f/f8/8bzgjls02ckf47n54uhp0sq8bndy7be.png",
@@ -601,7 +644,8 @@
     "purpose": "general",
     "craftable": "Elytra I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/7/72/gir6yht83oc8okn629s6vvss9q3eqke.png",
@@ -613,7 +657,8 @@
     "purpose": "general",
     "craftable": "Elytra II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/5/5e/3cgej1lyn8y49ql6zrtj6w4hhyj2n0t.png",
@@ -625,7 +670,8 @@
     "purpose": "general",
     "craftable": "Elytra III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/c/cc/mr7esoegk58pi7y6yoyxfolo1dt8854.png",
@@ -635,7 +681,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/a/a2/ndh6zvib6tstm5d382lmm01fo6sjk8y.png",
@@ -647,7 +694,8 @@
     "purpose": "general",
     "craftable": "Arsenopyrite I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/7/72/2mbultlg387xiw9lgi6v7bltz6fsrto.png",
@@ -659,7 +707,8 @@
     "purpose": "general",
     "craftable": "Arsenopyrite II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/9/96/qvxidebrd3hornt984eiz9edrrpoxzt.png",
@@ -671,7 +720,8 @@
     "purpose": "general",
     "craftable": "Arsenopyrite III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/2/21/r56ww57nty9fhvl48pfv1ezyguuby1k.png",
@@ -681,7 +731,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/b/b7/tjbj5e1gfccfgm6ti2bulnyq0xclyyl.png",
@@ -693,7 +744,8 @@
     "purpose": "general",
     "craftable": "Bone I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/0/00/d95087q867p9s51x9b6jdpjx0fx5axh.png",
@@ -705,7 +757,8 @@
     "purpose": "general",
     "craftable": "Bone II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/6/69/5v8szng0y97c5wzfea7pokf8s72xwm8.png",
@@ -717,7 +770,8 @@
     "purpose": "general",
     "craftable": "Bone III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/9/98/70u0lyi83k3a6vii55ipl9fig2xsup6.png",
@@ -727,7 +781,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/5/5f/99hv39o5yt0djaqjxkad1z2v8vanhm6.png",
@@ -739,7 +794,8 @@
     "purpose": "general",
     "craftable": "Tentacle I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/b/ba/l9pt1qnclwkopoulkcb5nlec7tya6h1.png",
@@ -751,7 +807,8 @@
     "purpose": "general",
     "craftable": "Tentacle II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/3b/pikhpjm6x79ppedw45umzt49t8f73j7.png",
@@ -763,7 +820,8 @@
     "purpose": "general",
     "craftable": "Tentacle III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/3a/c77nou7omqfxe2ow2bwz5y1midgn6nu.png",
@@ -773,7 +831,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/b/be/5mttw36l5j89vcxyy8ry4dwbywm820k.png",
@@ -785,7 +844,8 @@
     "purpose": "general",
     "craftable": "Bronze I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/5/5b/ni0uf1tbdqlryk90yyuobm6jly8v41f.png",
@@ -797,7 +857,8 @@
     "purpose": "general",
     "craftable": "Bronze II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/d/dc/hbxv06cnns5928x54p93es3alasjoks.png",
@@ -809,7 +870,8 @@
     "purpose": "general",
     "craftable": "Bronze III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/b/be/3qyzuodu51pj80tfmyee0uuzwfgidcy.png",
@@ -819,7 +881,8 @@
     "needed": 0,
     "amount": 0,
     "purpose": "general",
-    "craftable": "aaa"
+    "craftable": "aaa",
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/3/31/cta3qah6knldrdoyno2ty5t8g43s1bz.png",
@@ -831,7 +894,8 @@
     "purpose": "general",
     "craftable": "Cyst I",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/b/b6/gaqibxg8iqvzbez4ijkddqsg6a3pdma.png",
@@ -843,7 +907,8 @@
     "purpose": "general",
     "craftable": "Cyst II",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/2/24/al760jouy6o0d6ooo4mqi8qg6uc4vft.png",
@@ -855,7 +920,8 @@
     "purpose": "general",
     "craftable": "Cyst III",
     "canCraft": 0,
-    "mustCraft": 0
+    "mustCraft": 0,
+    "chests": true
   },
   {
     "img": "https://patchwiki.biligame.com/images/wqmt/e/e8/m99rq79hzscgxop4lfh99xz5asrjvh8.png",
@@ -883,5 +949,75 @@
     "needed": 0,
     "amount": 0,
     "purpose": "crimebrand"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/4/4b/4i0c4ht6h6sd8yvbqb940zc1wrbqg13.png",
+    "name": "Low-Level Material Supply",
+    "rarity": "PC-LR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "chest",
+    "for": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/8/83/rfwrx4b54wbw2t1pf116jok32va08el.png",
+    "name": "Mid-Level Material Supply",
+    "rarity": "PC-CR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "chest",
+    "for": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/6/66/tq71kdqtks74qjymlawajwzxvckpgz9.png",
+    "name": "High-Level Material Supply",
+    "rarity": "PC-AR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "chest",
+    "for": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/4/42/5whs9bw7mroqo8qly2hiepiqetpfrnm.png",
+    "name": "Super-Level Material Supply",
+    "rarity": "PC-GR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "chest",
+    "for": "general"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/6/6a/lqmdp7e47md8amuqxnl7m9hrckw7g3k.png",
+    "name": "Substance I Supply Chest",
+    "rarity": "PC-CR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "chest",
+    "for": "phaseup"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/0/00/p5xzl03bs0859qtgrcjdahx82kqyp9p.png",
+    "name": "Substance II Supply Chest",
+    "rarity": "PC-AR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "chest",
+    "for": "phaseup"
+  },
+  {
+    "img": "https://patchwiki.biligame.com/images/wqmt/c/c5/sr9pbkdvij5rwtf0gtjb4zg61dmndlr.png",
+    "name": "Substance III Supply Chest",
+    "rarity": "PC-GR",
+    "stages": null,
+    "needed": 0,
+    "amount": 0,
+    "purpose": "chest",
+    "for": "phaseup"
   }
 ]

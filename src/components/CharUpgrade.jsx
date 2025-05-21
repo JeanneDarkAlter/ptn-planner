@@ -38,7 +38,8 @@ function CharUpgrade ({ ...character }) {
         goalSkill4: character.goalSkill4,
     });*/
 
-  const materials = useContext(UpgradeContext).materials
+  // const materials = useContext(UpgradeContext).materials
+  const materials = JSON.parse(localStorage.getItem('materials'))
   const setMaterials = useContext(UpgradeContext).setMaterials
   const setUpgrade = useContext(UpgradeContext).setUpgrade
 
@@ -141,6 +142,9 @@ function CharUpgrade ({ ...character }) {
   }
 
   const changeChar = () => {
+    console.log('upgrade')
+    console.log(upgrade)
+    console.log(charData)
     // console.log(JSON.parse(localStorage.getItem("materials")));
     // NOTE: upgrade == character
     for (
@@ -324,8 +328,6 @@ function CharUpgrade ({ ...character }) {
   }
 
   const deleteChar = () => {
-    console.log(upgrade)
-    console.log(character)
     for (
       let i = parseInt(upgrade.currPhase);
       i < parseInt(upgrade.goalPhase);
@@ -399,14 +401,8 @@ function CharUpgrade ({ ...character }) {
     setMaterials(materials)
 
     let upgrades = JSON.parse(localStorage.getItem('upgrade'))
-    console.log('BBB')
-    console.log(upgrades)
     for (let i = 0; i < upgrades.length; i++) {
-      console.log(upgrades[i])
       if (upgrades[i].id === character.id) {
-        console.log('AAA')
-        console.log(upgrades[i].name)
-        console.log(character.name)
         upgrades.splice(i, 1)
         break
       }
@@ -424,7 +420,250 @@ function CharUpgrade ({ ...character }) {
     if (upgrade.currECB !== upgrade.goalECB) {
       isChecked = false
     }
+    if (upgrade.currSkill1 !== upgrade.goalSkill1) {
+      isChecked = false
+    }
+    if (upgrade.currSkill2 !== upgrade.goalSkill2) {
+      isChecked = false
+    }
+    if (upgrade.currSkill3 !== upgrade.goalSkill3) {
+      isChecked = false
+    }
+    if (upgrade.currSkill4 !== upgrade.goalSkill4) {
+      isChecked = false
+    }
     return isChecked ? 'green' : 'red'
+  }
+
+  const done = () => {
+    for (
+      let i = parseInt(upgrade.currPhase);
+      i < parseInt(upgrade.goalPhase);
+      i++
+    ) {
+      for (let j = 0; j < character.phases[i].length; j++) {
+        let material = materials.find(m => m.name === character.phases[i][j][0])
+        if (material.canCraft > 0) {
+          let craftable = materials.find(m => m.name === material.craftable)
+          material.needed = Math.max(
+            0,
+            material.needed - character.phases[i][j][1]
+          )
+          craftable.amount = Math.max(
+            0,
+            craftable.amount - material.canCraft * 3
+          )
+          material.canCraft = 0
+          while (craftable.canCraft > 0) {
+            let temp = craftable
+            craftable = materials.find(m => m.name === temp.craftable)
+            craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+          }
+        } else {
+          material.needed = Math.max(
+            0,
+            material.needed - character.phases[i][j][1]
+          )
+          material.amount = Math.max(
+            0,
+            material.amount - character.phases[i][j][1]
+          )
+        }
+      }
+    }
+    for (
+      let i = parseInt(upgrade.currSkill1);
+      i < parseInt(upgrade.goalSkill1);
+      i++
+    ) {
+      for (let j = 0; j < character.skills[i - 1].length; j++) {
+        let material = materials.find(
+          m => m.name === character.skills[i - 1][j][0]
+        )
+        if (material.canCraft > 0) {
+          let craftable = materials.find(m => m.name === material.craftable)
+          material.needed = Math.max(
+            0,
+            material.needed - character.skills[i - 1][j][1]
+          )
+          craftable.amount = Math.max(
+            0,
+            craftable.amount - material.canCraft * 3
+          )
+          material.canCraft = 0
+          while (craftable.canCraft > 0) {
+            let temp = craftable
+            craftable = materials.find(m => m.name === temp.craftable)
+            craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+          }
+        } else {
+          material.needed = Math.max(
+            0,
+            material.needed - character.skills[i - 1][j][1]
+          )
+          material.amount = Math.max(
+            0,
+            material.amount - character.skills[i - 1][j][1]
+          )
+        }
+      }
+    }
+    for (
+      let i = parseInt(upgrade.currSkill2);
+      i < parseInt(upgrade.goalSkill2);
+      i++
+    ) {
+      for (let j = 0; j < character.skills[i - 1].length; j++) {
+        let material = materials.find(
+          m => m.name === character.skills[i - 1][j][0]
+        )
+        if (material.canCraft > 0) {
+          let craftable = materials.find(m => m.name === material.craftable)
+          material.needed = Math.max(
+            0,
+            material.needed - character.skills[i - 1][j][1]
+          )
+          craftable.amount = Math.max(
+            0,
+            craftable.amount - material.canCraft * 3
+          )
+          material.canCraft = 0
+          while (craftable.canCraft > 0) {
+            let temp = craftable
+            craftable = materials.find(m => m.name === temp.craftable)
+            craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+          }
+        } else {
+          material.needed = Math.max(
+            0,
+            material.needed - character.skills[i - 1][j][1]
+          )
+          material.amount = Math.max(
+            0,
+            material.amount - character.skills[i - 1][j][1]
+          )
+        }
+      }
+    }
+    for (
+      let i = parseInt(upgrade.currSkill3);
+      i < parseInt(upgrade.goalSkill3);
+      i++
+    ) {
+      for (let j = 0; j < character.skills[i - 1].length; j++) {
+        let material = materials.find(
+          m => m.name === character.skills[i - 1][j][0]
+        )
+        if (material.canCraft > 0) {
+          let craftable = materials.find(m => m.name === material.craftable)
+          material.needed = Math.max(
+            0,
+            material.needed - character.skills[i - 1][j][1]
+          )
+          craftable.amount = Math.max(
+            0,
+            craftable.amount - material.canCraft * 3
+          )
+          material.canCraft = 0
+          while (craftable.canCraft > 0) {
+            let temp = craftable
+            craftable = materials.find(m => m.name === temp.craftable)
+            craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+          }
+        } else {
+          material.needed = Math.max(
+            0,
+            material.needed - character.skills[i - 1][j][1]
+          )
+          material.amount = Math.max(
+            0,
+            material.amount - character.skills[i - 1][j][1]
+          )
+        }
+      }
+    }
+    for (
+      let i = parseInt(upgrade.currSkill4);
+      i < parseInt(upgrade.goalSkill4);
+      i++
+    ) {
+      for (let j = 0; j < character.skills[i - 1].length; j++) {
+        let material = materials.find(
+          m => m.name === character.skills[i - 1][j][0]
+        )
+        if (material.canCraft > 0) {
+          let craftable = materials.find(m => m.name === material.craftable)
+          material.needed = Math.max(
+            0,
+            material.needed - character.skills[i - 1][j][1]
+          )
+          craftable.amount = Math.max(
+            0,
+            craftable.amount - material.canCraft * 3
+          )
+          material.canCraft = 0
+          while (craftable.canCraft > 0) {
+            let temp = craftable
+            craftable = materials.find(m => m.name === temp.craftable)
+            craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+          }
+        } else {
+          material.needed = Math.max(
+            0,
+            material.needed - character.skills[i - 1][j][1]
+          )
+          material.amount = Math.max(
+            0,
+            material.amount - character.skills[i - 1][j][1]
+          )
+        }
+      }
+    }
+    for (
+      let i = parseInt(upgrade.currECB);
+      i < parseInt(upgrade.goalECB);
+      i++
+    ) {
+      for (let j = 0; j < character.ecb[i].length; j++) {
+        let material = materials.find(m => m.name === character.ecb[i][j][0])
+        material.needed -= character.ecb[i][j][1]
+        material.amount -= character.ecb[i][j][1]
+      }
+    }
+
+    localStorage.setItem('materials', JSON.stringify(materials))
+    setMaterials(materials)
+
+    upgrade.currPhase = upgrade.goalPhase
+    upgrade.currSkill1 = upgrade.goalSkill1
+    upgrade.currSkill2 = upgrade.goalSkill2
+    upgrade.currSkill3 = upgrade.goalSkill3
+    upgrade.currSkill4 = upgrade.goalSkill4
+    upgrade.currECB = upgrade.goalECB
+
+    charData.currPhase = upgrade.goalPhase
+    charData.currSkill1 = upgrade.goalSkill1
+    charData.currSkill2 = upgrade.goalSkill2
+    charData.currSkill3 = upgrade.goalSkill3
+    charData.currSkill4 = upgrade.goalSkill4
+    charData.currECB = upgrade.goalECB
+
+    let upgrades = JSON.parse(localStorage.getItem('upgrade'))
+    upgrades = upgrades.map(value => {
+      if (value.id === character.id) {
+        return upgrade
+      } else {
+        return value
+      }
+    })
+
+    console.log(character.name)
+    console.log(upgrade)
+    console.log(charData)
+    localStorage.setItem('upgrade', JSON.stringify(upgrades))
+    setUpgrade(upgrades)
+    console.log(upgrades)
+    window.location.reload()
   }
 
   let color =
@@ -756,7 +995,15 @@ function CharUpgrade ({ ...character }) {
             >
               Change character
             </button>
-            <button onClick={() => close()}>Close</button>
+            <button
+              onClick={() => {
+                done()
+                close()
+              }}
+            >
+              Done
+            </button>
+            {/* <button onClick={() => close()}>Close</button> */}
           </div>
         )}
       </Popup>
