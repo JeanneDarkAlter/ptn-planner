@@ -956,8 +956,9 @@ function Upgrading () {
       </div>
 
       {/*NOTE: инвентарь*/}
-      {/* <h2>Inventory</h2>
-      <div>
+      {
+        <h2>Inventory</h2>
+        /*<div>
         <label htmlFor='needed'>
           <input
             type='checkbox'
@@ -976,7 +977,8 @@ function Upgrading () {
           />
           Only missing materials
         </label>
-      </div> */}
+      </div> */
+      }
       <h3>General</h3>
       <div id='general'>
         {
