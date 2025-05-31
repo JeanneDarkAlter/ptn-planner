@@ -1,4 +1,11 @@
-import { createContext, useEffect, useState } from 'react'
+import {
+  createContext,
+  useEffect,
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle
+} from 'react'
 import axios from 'axios'
 import Material from './Material'
 import '../css/Upgrading.css'
@@ -15,35 +22,16 @@ function Upgrading () {
     if (localStorage.getItem('materials') === null) {
       let materials = []
       for (let i = 0; i < mats.length; i++) {
-        // let material = {
-        //   name: mats[i].name,
-        //   needed: mats[i].needed,
-        //   amount: mats[i].amount
-        // }
         materials.push(mats[i])
       }
-      // console.log(materials);
       localStorage.setItem('materials', JSON.stringify(materials))
-
-      // localStorage.setItem("materials", JSON.stringify(mats));
-
-      return mats
+      return materials
     } else {
       let materials = []
       let m = JSON.parse(localStorage.getItem('materials'))
       for (let i = 0; i < m.length; i++) {
-        // let material = {
-        //   name: m[i].name,
-        //   needed: m[i].needed,
-        //   amount: m[i].amount
-        // }
         materials.push(m[i])
       }
-      // console.log(materials);
-
-      // let materials = JSON.parse(localStorage.getItem("materials"));
-      console.log(materials)
-
       if (materials.length < mats.length) {
         for (let i = 0; i < mats.length; i++) {
           if (!materials.find(m => m.name === mats[i].name)) {
@@ -55,10 +43,7 @@ function Upgrading () {
             materials.splice(i, 1)
           }
         }
-        localStorage.setItem('materials', JSON.stringify(materials))
-        return materials
-      }
-      if (materials.length > mats.length) {
+      } else if (materials.length > mats.length) {
         for (let i = 0; i < mats.length; i++) {
           if (!materials.find(m => m.name === mats[i].name)) {
             materials.splice(i, 0, mats[i])
@@ -69,11 +54,29 @@ function Upgrading () {
             materials.splice(i, 1)
           }
         }
-        localStorage.setItem('materials', JSON.stringify(materials))
-        return materials
-      } else {
-        return materials
       }
+
+      for (let i = 0; i < materials.length; i++) {
+        let keys = Object.keys(mats[i])
+        for (let j = 0; j < keys; j++) {
+          if (!materials[i].hasOwnProperty(keys[j])) {
+            materials[i].keys[j] = keys[j].value
+          }
+        }
+      }
+
+      const allowedKeys = Array.from(
+        new Set(mats.flatMap(obj => Object.keys(obj)))
+      )
+
+      materials = materials.map(obj => {
+        return Object.fromEntries(
+          Object.entries(obj).filter(([key]) => allowedKeys.includes(key))
+        )
+      })
+
+      localStorage.setItem('materials', JSON.stringify(materials))
+      return materials
     }
   }
 
@@ -81,100 +84,6 @@ function Upgrading () {
   const [characters, setCharacters] = useState(chars)
   const [displaying, setDisplaying] = useState(chars)
   const [upgrade, setUpgrade] = useState([])
-
-  // useEffect(() => {
-  //     if (localStorage.getItem("materials") === null) {
-  //         axios.get("../json/materials.json")
-  //             .then(res => {
-  //                 setMaterials(res.data);
-  //                 localStorage.setItem("materials", JSON.stringify(res.data));
-  //             });
-  //     }
-  //     else {
-  //         axios.get("../json/materials.json")
-  //             .then(res => {
-  //                 let materials = JSON.parse(localStorage.getItem("materials"));
-  //                 if (materials.length < res.data.length) {
-  //                     for (let i = 0; i < res.data.length; i++) {
-  //                         if (!materials.find(m => m.name === res.data[i].name)) {
-  //                             characters.splice(i, 0, res.data[i]);
-  //                         }
-  //                     }
-  //                     for (let i = 0; i < materials.length; i++) {
-  //                         if (!res.data.find(m => m.name === materials[i].name)) {
-  //                             materials.splice(i, 1);
-  //                         }
-  //                     }
-  //                     setMaterials(materials);
-  //                     localStorage.setItem("materials", JSON.stringify(materials));
-  //                 }
-  //                 else {
-  //                     setMaterials(materials);
-  //                 }
-  //             });
-  //     }
-  // }, []);
-
-  // useEffect(() => {
-  //     axios.get("../json/characters.json")
-  //         .then(res => {
-  //             setCharacters(res.data);
-  //         })
-
-  //     //NOTE: old version
-  //     // if (localStorage.getItem("characters") === null) {
-  //     //     axios.get("../json/characters.json")
-  //     //         .then(res => {
-  //     //             //NOTE: new version
-  //     //             let characters = [];
-  //     //             for (let i = 0; i < res.data.length; i++) {
-  //     //                 characters.push(res.data[i].id);
-  //     //             }
-  //     //             setCharacters(characters);
-  //     //             localStorage.setItem("characters", JSON.stringify(characters))
-
-  //     //             //NOTE: old version
-  //     //             // setCharacters(res.data);
-  //     //             // localStorage.setItem("characters", JSON.stringify(res.data))
-  //     //         });
-  //     // }
-  //     // else {
-  //     //     axios.get("../json/characters.json")
-  //     //         .then(res => {
-  //     //             let characters = JSON.parse(localStorage.getItem("characters"));
-  //     //             console.log(characters);
-  //     //             if (characters.length !== res.data.length) {
-  //     //                 for (let i = 0; i < res.data.length; i++) {
-  //     //                     //NOTE: new version
-  //     //                     if (!characters.find(c => c === res.data[i].id)) {
-  //     //                         characters.splice(i, 0, res.data[i].id);
-  //     //                     }
-
-  //     //                     //NOTE: old version
-  //     //                     // if (!characters.find(c => c.name === res.data[i].name)) {
-  //     //                     //     characters.splice(i, 0, res.data[i]);
-  //     //                     // }
-  //     //                 }
-  //     //                 for (let i = 0; i < characters.length; i++) {
-  //     //                     //NOTE: new version
-  //     //                     if (!res.data.find(c => c.id === characters[i])) {
-  //     //                         characters.splice(i, 1);
-  //     //                     }
-
-  //     //                     //NOTE: old version
-  //     //                     // if (!res.data.find(c => c.name === characters[i].name)) {
-  //     //                     //     characters.splice(i, 1);
-  //     //                     // }
-  //     //                 }
-  //     //                 setCharacters(characters);
-  //     //                 localStorage.setItem("characters", JSON.stringify(characters));
-  //     //             }
-  //     //             else {
-  //     //                 setCharacters(characters);
-  //     //             }
-  //     //         });
-  //     // }
-  // }, [])
 
   useEffect(() => {
     if (localStorage.getItem('upgrade') !== null) {
@@ -185,38 +94,6 @@ function Upgrading () {
   const clearLocStor = () => {
     localStorage.clear()
     window.location.reload()
-  }
-
-  const handleNeededChange = () => {
-    let materials = JSON.parse(localStorage.getItem('materials'))
-    for (let i = 0; i < materials.length; i++) {
-      document.getElementById(materials[i].name).style.display = 'block'
-    }
-    if (document.getElementById('needed').checked) {
-      // console.log(document.getElementsByClassName("mat")[0].id);
-      // for (let i = 0; i < document.getElementsByClassName("mat").length; i++) {
-      //     let material = materials.find(m => m.name === document.getElementsByClassName("mat")[i].id);
-      //     if (material.needed > 0) {
-      //         document.getElementsByClassName("mat")[i].style.display == "hidden";
-      //     }
-      // }
-      // materials = materials.filter(material => (material.needed > 0));
-      materials = materials.filter(material => !(material.needed > 0))
-      for (let i = 0; i < materials.length; i++) {
-        document.getElementById(materials[i].name).style.display = 'none'
-        console.log(document.getElementById(materials[i].name))
-      }
-    }
-    if (document.getElementById('missing').checked) {
-      // materials = materials.filter(material => (material.needed > material.amount));
-      materials = materials.filter(
-        material => !(material.needed > material.amount)
-      )
-      for (let i = 0; i < materials.length; i++) {
-        document.getElementById(materials[i].name).style.display = 'none'
-      }
-    }
-    // setMaterials(materials);
   }
 
   const handleFiltering = () => {
@@ -238,11 +115,8 @@ function Upgrading () {
         } else {
           roles.push(document.getElementsByClassName('checkbox-btn')[i].title)
         }
-        // characters = characters.filter(c => upgrade.find(u => c.id === u.id) && (c.rank === checks[i].title || c.role === checks[i].title));
       }
     }
-    console.log(roles)
-    console.log(ranks)
     characters = characters.filter(c => upgrade.find(u => c.id === u.id))
     characters = characters.filter(character => {
       if (ranks.length > 0) {
@@ -304,7 +178,6 @@ function Upgrading () {
               .querySelectorAll('.checkbox-btn')[i].title
           )
         }
-        // characters = characters.filter(c => upgrade.find(u => c.id === u.id) && (c.rank === checks[i].title || c.role === checks[i].title));
       }
     }
     characters = characters.filter(c => chars.find(u => c.id === u.id))
@@ -326,9 +199,9 @@ function Upgrading () {
       }
       return true
     })
-    for (let i = 0; i < characters.length; i++) {
-      console.log(characters[i].released)
-    }
+    // for (let i = 0; i < characters.length; i++) {
+    //   console.log(characters[i].released)
+    // }
     if (released === true) {
       characters = characters.filter(
         character => character.released === released
@@ -337,20 +210,14 @@ function Upgrading () {
     setDisplaying(characters)
   }
 
-  // const handleReleased = () => {
-  //     for (let i = 0; i < document.querySelector("#overlay").querySelectorAll(".checkbox-btn").length; i++) {
-  //         if (document.querySelector("#overlay").querySelectorAll(".checkbox-btn")[i].title === "released") {
-  //             released = true;
-  //         }
-  //     }
-  // }
-
-  for (let i = 0; i < mats.length; i++) {
-    if (mats[i].craftable != null && mats[i].canCraft == null) {
-      let names = mats.filter(m => m.name.includes(mats[i].name.split(' ')[0]))
+  for (let i = 0; i < materials.length; i++) {
+    if (materials[i].craftable != null && materials[i].canCraft == null) {
+      let names = materials.filter(m =>
+        m.name.includes(materials[i].name.split(' ')[0])
+      )
       if (names.length === 4) {
         // if (materials[i].amount >= materials[i].needed) {
-        mats[i + 1].canCraft = Math.max(
+        materials[i + 1].canCraft = Math.max(
           Math.min(
             Math.floor((materials[i].amount - materials[i].needed) / 3),
             materials[i + 1].needed -
@@ -367,11 +234,11 @@ function Upgrading () {
           0
         )
 
-        mats[i + 2].canCraft = Math.max(
+        materials[i + 2].canCraft = Math.max(
           Math.min(
             Math.floor(
               (parseInt(materials[i + 1].amount) +
-                parseInt(mats[i + 1].canCraft) -
+                parseInt(materials[i + 1].canCraft) -
                 materials[i + 1].needed) /
                 3
             ),
@@ -385,11 +252,11 @@ function Upgrading () {
           0
         )
 
-        mats[i + 3].canCraft = Math.max(
+        materials[i + 3].canCraft = Math.max(
           Math.min(
             Math.floor(
               (parseInt(materials[i + 2].amount) +
-                parseInt(mats[i + 2].canCraft) -
+                parseInt(materials[i + 2].canCraft) -
                 materials[i + 2].needed) /
                 3
             ),
@@ -399,18 +266,16 @@ function Upgrading () {
         )
 
         let json = JSON.parse(localStorage.getItem('materials'))
-        let mat_ii = json.findIndex(obj => obj.name === mats[i + 1].name)
-        json[mat_ii].canCraft = mats[i + 1].canCraft
-        let mat_iii = json.findIndex(obj => obj.name === mats[i + 2].name)
-        json[mat_iii].canCraft = mats[i + 2].canCraft
-        let mat_iv = json.findIndex(obj => obj.name === mats[i + 3].name)
-        json[mat_iv].canCraft = mats[i + 3].canCraft
+        let mat_ii = json.findIndex(obj => obj.name === materials[i + 1].name)
+        json[mat_ii].canCraft = materials[i + 1].canCraft
+        let mat_iii = json.findIndex(obj => obj.name === materials[i + 2].name)
+        json[mat_iii].canCraft = materials[i + 2].canCraft
+        let mat_iv = json.findIndex(obj => obj.name === materials[i + 3].name)
+        json[mat_iv].canCraft = materials[i + 3].canCraft
         localStorage.setItem('materials', JSON.stringify(json))
       }
       if (names.length === 3) {
-        console.log(mats[i], mats[i + 1], mats[i + 2])
-
-        mats[i + 1].canCraft = Math.max(
+        materials[i + 1].canCraft = Math.max(
           Math.min(
             Math.floor((materials[i].amount - materials[i].needed) / 3),
             materials[i + 1].needed -
@@ -422,11 +287,11 @@ function Upgrading () {
           ),
           0
         )
-        mats[i + 2].canCraft = Math.max(
+        materials[i + 2].canCraft = Math.max(
           Math.min(
             Math.floor(
               (parseInt(materials[i + 1].amount) +
-                parseInt(mats[i + 1].canCraft) -
+                parseInt(materials[i + 1].canCraft) -
                 materials[i + 1].needed) /
                 3
             ),
@@ -435,15 +300,23 @@ function Upgrading () {
           0
         )
         let json = JSON.parse(localStorage.getItem('materials'))
-        let mat_ii = json.findIndex(obj => obj.name === mats[i + 1].name)
-        json[mat_ii].canCraft = mats[i + 1].canCraft
-        let mat_iii = json.findIndex(obj => obj.name === mats[i + 2].name)
-        json[mat_iii].canCraft = mats[i + 2].canCraft
+        let mat_ii = json.findIndex(obj => obj.name === materials[i + 1].name)
+        json[mat_ii].canCraft = materials[i + 1].canCraft
+        let mat_iii = json.findIndex(obj => obj.name === materials[i + 2].name)
+        json[mat_iii].canCraft = materials[i + 2].canCraft
         localStorage.setItem('materials', JSON.stringify(json))
       }
     }
-    // console.log('CRAFTING CALCULATIONS COMPLETE')
-    // console.log(JSON.parse(localStorage.getItem('materials')))
+  }
+
+  const materialsRefs = useRef({})
+
+  const setOtherValue = (targetId, newValue) => {
+    const ref = materialsRefs.current[targetId]
+    console.log(targetId)
+    if (ref && ref.setValue) {
+      ref.setValue(newValue)
+    }
   }
 
   return (
@@ -454,7 +327,6 @@ function Upgrading () {
           <button
             onClick={() => {
               setDisplaying(chars)
-              console.log('A')
             }}
           >
             Add character
@@ -938,7 +810,11 @@ function Upgrading () {
                   value={{ materials, setMaterials, setUpgrade }}
                   key={character.id}
                 >
-                  <CharUpgrade key={character.id} {...character} />
+                  <CharUpgrade
+                    key={character.id}
+                    {...character}
+                    trigger={setOtherValue}
+                  />
                 </UpgradeContext.Provider>
               )
             } else {
@@ -982,15 +858,22 @@ function Upgrading () {
       <h3>General</h3>
       <div id='general'>
         {
-          //NOTE: materials -> mats
-          mats.map(material => {
+          //NOTE: materials -> materials
+          materials.map(material => {
             if (material.purpose === 'general') {
               return (
                 <UpgradeContext.Provider
                   value={{ setMaterials }}
                   key={material.name}
                 >
-                  <Material key={material.name} {...material} />
+                  <Material
+                    key={material.name}
+                    {...material}
+                    ref={el => {
+                      if (el) materialsRefs.current[material.name] = el
+                    }}
+                    trigger={setOtherValue}
+                  />
                 </UpgradeContext.Provider>
               )
             }
@@ -1001,15 +884,22 @@ function Upgrading () {
       <h3>Ascension</h3>
       <div id='phaseup'>
         {
-          //NOTE: materials -> mats
-          mats.map(material => {
+          //NOTE: materials -> materials
+          materials.map(material => {
             if (material.purpose === 'phaseup') {
               return (
                 <UpgradeContext.Provider
                   value={{ setMaterials }}
                   key={material.name}
                 >
-                  <Material key={material.name} {...material} />
+                  <Material
+                    key={material.name}
+                    {...material}
+                    ref={el => {
+                      if (el) materialsRefs.current[material.name] = el
+                    }}
+                    trigger={setOtherValue}
+                  />
                 </UpgradeContext.Provider>
               )
             }
@@ -1020,15 +910,22 @@ function Upgrading () {
       <h3>Skills</h3>
       <div id='skills'>
         {
-          //NOTE: materials -> mats
-          mats.map(material => {
+          //NOTE: materials -> materials
+          materials.map(material => {
             if (material.purpose === 'skills') {
               return (
                 <UpgradeContext.Provider
                   value={{ setMaterials }}
                   key={material.name}
                 >
-                  <Material key={material.name} {...material} />
+                  <Material
+                    key={material.name}
+                    {...material}
+                    ref={el => {
+                      if (el) materialsRefs.current[material.name] = el
+                    }}
+                    trigger={setOtherValue}
+                  />
                 </UpgradeContext.Provider>
               )
             }
@@ -1038,14 +935,21 @@ function Upgrading () {
       </div>
       <h3>Crimebrands</h3>
       <div id='crimebrands'>
-        {mats.map(material => {
+        {materials.map(material => {
           if (material.purpose === 'crimebrand') {
             return (
               <UpgradeContext.Provider
                 value={{ setMaterials }}
                 key={material.name}
               >
-                <Material key={material.name} {...material} />
+                <Material
+                  key={material.name}
+                  {...material}
+                  ref={el => {
+                    if (el) materialsRefs.current[material.name] = el
+                  }}
+                  trigger={setOtherValue}
+                />
               </UpgradeContext.Provider>
             )
           }
@@ -1054,14 +958,21 @@ function Upgrading () {
       </div>
       <h3>Chests</h3>
       <div id='chests'>
-        {mats.map(material => {
+        {materials.map(material => {
           if (material.purpose === 'chest') {
             return (
               <UpgradeContext.Provider
                 value={{ setMaterials }}
                 key={material.name}
               >
-                <Material key={material.name} {...material} />
+                <Material
+                  key={material.name}
+                  {...material}
+                  ref={el => {
+                    if (el) materialsRefs.current[material.name] = el
+                  }}
+                  trigger={setOtherValue}
+                />
               </UpgradeContext.Provider>
             )
           }

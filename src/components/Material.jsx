@@ -1,7 +1,7 @@
 import '../css/Material.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfo, faToolbox } from '@fortawesome/free-solid-svg-icons'
-import { useContext, useState } from 'react'
+import { useContext, useState, useImperativeHandle, forwardRef } from 'react'
 import { UpgradeContext } from './Upgrading'
 import { autoPlacement, computePosition } from '@floating-ui/dom'
 import {
@@ -18,7 +18,7 @@ import {
   safePolygon
 } from '@floating-ui/react'
 
-function Material ({ ...material }) {
+const Material = forwardRef(({ trigger, ...material }, ref) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const { refs, floatingStyles, context } = useFloating({
@@ -43,12 +43,15 @@ function Material ({ ...material }) {
   ])
 
   const setMaterials = useContext(UpgradeContext).setMaterials
-  let mat = JSON.parse(localStorage.getItem('materials')).find(
-    m => m.name === material.name
-  )
   //NOTE: new mat
 
-  const [value, setValue] = useState(Number(mat.amount).toString())
+  const [value, setValue] = useState(Number(material.amount).toString())
+
+  useImperativeHandle(ref, () => ({
+    setValue: newVal => {
+      setValue(newVal)
+    }
+  }))
 
   const handleAmountChange = event => {
     setValue(event.target.value)
@@ -95,29 +98,13 @@ function Material ({ ...material }) {
             m.rarity === material.rarity &&
             m.for === material.purpose
         )
-        // return (
-        //   'You can open ' +
-        //   Math.max(
-        //     Math.min(
-        //       chest.amount,
-        //       (mat_ii.needed - mat_ii.amount) * 3 +
-        //         (mat_iii.needed - mat_iii.amount) * 9 +
-        //         (mat_iv.needed - mat_iv.amount) * 27 +
-        //         (mat.needed - mat.amount)
-        //     ),
-        //     0
-        //   ) +
-        //   ' ' +
-        //   chest.name +
-        //   ' chest'
-        // )
         return Math.max(
           Math.min(
             chest.amount,
             (mat_ii.needed - mat_ii.amount) * 3 +
               (mat_iii.needed - mat_iii.amount) * 9 +
               (mat_iv.needed - mat_iv.amount) * 27 +
-              (mat.needed - mat.amount)
+              (material.needed - material.amount)
           ),
           0
         )
@@ -137,27 +124,13 @@ function Material ({ ...material }) {
             m.rarity === material.rarity &&
             m.for === material.purpose
         )
-        // return (
-        //   'You can open ' +
-        //   Math.max(
-        //     Math.min(
-        //       chest.amount,
-        //       (mat_iii.needed - mat_iii.amount) * 3 +
-        //         (mat_iv.needed - mat_iv.amount) * 9 +
-        //         (mat.needed - mat.amount - mat.canCraft)
-        //     ),
-        //     0
-        //   ) +
-        //   ' ' +
-        //   chest.name +
-        //   ' chest'
-        // )
+
         return Math.max(
           Math.min(
             chest.amount,
             (mat_iii.needed - mat_iii.amount) * 3 +
               (mat_iv.needed - mat_iv.amount) * 9 +
-              (mat.needed - mat.amount - mat.canCraft)
+              (material.needed - material.amount - material.canCraft)
           ),
           0
         )
@@ -174,27 +147,12 @@ function Material ({ ...material }) {
             m.rarity === material.rarity &&
             m.for === material.purpose
         )
-        // return (
-        //   'You can open ' +
-        //   Math.max(
-        //     Math.min(
-        //       chest.amount,
-        //       (mat_ii.needed - mat_ii.amount) * 3 +
-        //         (mat_iii.needed - mat_iii.amount) * 9 +
-        //         (mat.needed - mat.amount)
-        //     ),
-        //     0
-        //   ) +
-        //   ' ' +
-        //   chest.name +
-        //   ' chest'
-        // )
         return Math.max(
           Math.min(
             chest.amount,
             (mat_ii.needed - mat_ii.amount) * 3 +
               (mat_iii.needed - mat_iii.amount) * 9 +
-              (mat.needed - mat.amount)
+              (material.needed - material.amount)
           ),
           0
         )
@@ -211,25 +169,11 @@ function Material ({ ...material }) {
             m.rarity === material.rarity &&
             m.for === material.purpose
         )
-        // return (
-        //   'You can open ' +
-        //   Math.max(
-        //     Math.min(
-        //       chest.amount,
-        //       (mat_iv.needed - mat_iv.amount) * 3 +
-        //         (mat.needed - mat.amount - mat.canCraft)
-        //     ),
-        //     0
-        //   ) +
-        //   ' ' +
-        //   chest.name +
-        //   ' chest'
-        // )
         return Math.max(
           Math.min(
             chest.amount,
             (mat_iv.needed - mat_iv.amount) * 3 +
-              (mat.needed - mat.amount - mat.canCraft)
+              (material.needed - material.amount - material.canCraft)
           ),
           0
         )
@@ -243,25 +187,11 @@ function Material ({ ...material }) {
             m.rarity === material.rarity &&
             m.for === material.purpose
         )
-        // return (
-        //   'You can open ' +
-        //   Math.max(
-        //     Math.min(
-        //       chest.amount,
-        //       (mat_iv.needed - mat_iv.amount) * 3 +
-        //         (mat.needed - mat.amount - mat.canCraft)
-        //     ),
-        //     0
-        //   ) +
-        //   ' ' +
-        //   chest.name +
-        //   ' chest'
-        // )
         return Math.max(
           Math.min(
             chest.amount,
             (mat_iv.needed - mat_iv.amount) * 3 +
-              (mat.needed - mat.amount - mat.canCraft)
+              (material.needed - material.amount - material.canCraft)
           ),
           0
         )
@@ -274,18 +204,11 @@ function Material ({ ...material }) {
             m.rarity === material.rarity &&
             m.for === material.purpose
         )
-        // return (
-        //   'You can open ' +
-        //   Math.max(
-        //     Math.min(chest.amount, mat.needed - mat.amount - mat.canCraft),
-        //     0
-        //   ) +
-        //   ' ' +
-        //   chest.name +
-        //   ' chest'
-        // )
         return Math.max(
-          Math.min(chest.amount, mat.needed - mat.amount - mat.canCraft),
+          Math.min(
+            chest.amount,
+            material.needed - material.amount - material.canCraft
+          ),
           0
         )
       } else if (material.purpose === 'phaseup' && material.chests) {
@@ -295,18 +218,11 @@ function Material ({ ...material }) {
             m.rarity === material.rarity &&
             m.for === material.purpose
         )
-        // return (
-        //   'You can open ' +
-        //   Math.max(
-        //     Math.min(chest.amount, mat.needed - mat.amount - mat.canCraft),
-        //     0
-        //   ) +
-        //   ' ' +
-        //   chest.name +
-        //   ' chest'
-        // )
         return Math.max(
-          Math.min(chest.amount, mat.needed - mat.amount - mat.canCraft),
+          Math.min(
+            chest.amount,
+            material.needed - material.amount - material.canCraft
+          ),
           0
         )
       }
@@ -316,7 +232,7 @@ function Material ({ ...material }) {
   let chestAmount = calcChests()
 
   const openChests = () => {
-    mat.amount += chestAmount
+    material.amount = Number(material.amount) + Number(chestAmount)
     let chest = JSON.parse(localStorage.getItem('materials')).find(
       m =>
         m.purpose === 'chest' &&
@@ -324,19 +240,19 @@ function Material ({ ...material }) {
         m.for === material.purpose
     )
     chest.amount -= chestAmount
-    setValue(mat.amount)
+    setValue(material.amount)
+    trigger(chest.name, chest.amount)
 
     let materials = JSON.parse(localStorage.getItem('materials'))
     for (let i = 0; i < materials.length; i++) {
       if (materials[i].name === material.name) {
-        materials[i].amount = mat.amount
+        materials[i].amount = material.amount
       } else if (materials[i].name === chest.name) {
         materials[i].amount = chest.amount
       }
     }
     localStorage.setItem('materials', JSON.stringify(materials))
     setMaterials(materials)
-    // window.location.reload()
   }
 
   return (
@@ -346,38 +262,15 @@ function Material ({ ...material }) {
       id={material.name}
       style={{
         backgroundColor:
-          parseInt(mat.needed) === 0
+          parseInt(material.needed) === 0
             ? 'gray'
-            : parseInt(mat.amount) >= parseInt(mat.needed) ||
-              parseInt(mat.amount) + parseInt(material.canCraft) >=
-                parseInt(mat.needed)
+            : parseInt(material.amount) >= parseInt(material.needed) ||
+              parseInt(material.amount) + parseInt(material.canCraft) >=
+                parseInt(material.needed)
             ? '#184618'
             : '#461818'
       }}
     >
-      {/* green : red*/}
-      {/* {material.stages !== null && (
-        <div>
-          <FontAwesomeIcon
-            icon={faInfo}
-            style={{ color: '#ffffff' }}
-            className='info'
-          />
-          <span className='tooltip'>How to get: {material.stages}</span>
-        </div>
-      )} */}
-
-      {/* <div>
-        {material.chests !== undefined && (
-          <FontAwesomeIcon
-            icon={faToolbox}
-            style={{ color: '#ffffff' }}
-            className='info'
-          />
-        )}
-        <span className='tooltip'>{calcChests()}</span>
-      </div> */}
-
       <div>
         {material.chests !== undefined && (
           <button
@@ -406,7 +299,7 @@ function Material ({ ...material }) {
 
       <img src={material.img} alt='' height={50} />
       <p>{material.name}</p>
-      <p>{mat.needed}</p>
+      <p>{material.needed}</p>
       {material.canCraft > 0 && <p>Can be crafted: {material.canCraft}</p>}
       <input
         type='number'
@@ -426,6 +319,6 @@ function Material ({ ...material }) {
       />
     </div>
   )
-}
+})
 
 export default Material

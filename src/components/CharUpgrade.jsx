@@ -2,7 +2,7 @@ import Popup from 'reactjs-popup'
 import { useContext, useState } from 'react'
 import { UpgradeContext } from './Upgrading'
 
-function CharUpgrade ({ ...character }) {
+function CharUpgrade ({ trigger, ...character }) {
   //NOTE: new version
   let upgrade = JSON.parse(localStorage.getItem('upgrade')).find(
     u => u.id === character.id
@@ -458,7 +458,12 @@ function CharUpgrade ({ ...character }) {
             let temp = craftable
             craftable = materials.find(m => m.name === temp.craftable)
             craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+            trigger(
+              craftable.name,
+              craftable.amount >= 0 ? craftable.amount : 0
+            )
           }
+          trigger(craftable.name, craftable.amount >= 0 ? craftable.amount : 0)
         } else {
           material.needed = Math.max(
             0,
@@ -469,6 +474,7 @@ function CharUpgrade ({ ...character }) {
             material.amount - character.phases[i][j][1]
           )
         }
+        trigger(material.name, material.amount >= 0 ? material.amount : 0)
       }
     }
     for (
@@ -495,7 +501,12 @@ function CharUpgrade ({ ...character }) {
             let temp = craftable
             craftable = materials.find(m => m.name === temp.craftable)
             craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+            trigger(
+              craftable.name,
+              craftable.amount >= 0 ? craftable.amount : 0
+            )
           }
+          trigger(craftable.name, craftable.amount >= 0 ? craftable.amount : 0)
         } else {
           material.needed = Math.max(
             0,
@@ -506,6 +517,7 @@ function CharUpgrade ({ ...character }) {
             material.amount - character.skills[i - 1][j][1]
           )
         }
+        trigger(material.name, material.amount >= 0 ? material.amount : 0)
       }
     }
     for (
@@ -532,7 +544,12 @@ function CharUpgrade ({ ...character }) {
             let temp = craftable
             craftable = materials.find(m => m.name === temp.craftable)
             craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+            trigger(
+              craftable.name,
+              craftable.amount >= 0 ? craftable.amount : 0
+            )
           }
+          trigger(craftable.name, craftable.amount >= 0 ? craftable.amount : 0)
         } else {
           material.needed = Math.max(
             0,
@@ -543,6 +560,7 @@ function CharUpgrade ({ ...character }) {
             material.amount - character.skills[i - 1][j][1]
           )
         }
+        trigger(material.name, material.amount >= 0 ? material.amount : 0)
       }
     }
     for (
@@ -569,7 +587,12 @@ function CharUpgrade ({ ...character }) {
             let temp = craftable
             craftable = materials.find(m => m.name === temp.craftable)
             craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+            trigger(
+              craftable.name,
+              craftable.amount >= 0 ? craftable.amount : 0
+            )
           }
+          trigger(craftable.name, craftable.amount >= 0 ? craftable.amount : 0)
         } else {
           material.needed = Math.max(
             0,
@@ -580,6 +603,7 @@ function CharUpgrade ({ ...character }) {
             material.amount - character.skills[i - 1][j][1]
           )
         }
+        trigger(material.name, material.amount >= 0 ? material.amount : 0)
       }
     }
     for (
@@ -606,7 +630,12 @@ function CharUpgrade ({ ...character }) {
             let temp = craftable
             craftable = materials.find(m => m.name === temp.craftable)
             craftable.amount = Math.max(0, craftable.amount - temp.canCraft * 3)
+            trigger(
+              craftable.name,
+              craftable.amount >= 0 ? craftable.amount : 0
+            )
           }
+          trigger(craftable.name, craftable.amount >= 0 ? craftable.amount : 0)
         } else {
           material.needed = Math.max(
             0,
@@ -617,6 +646,7 @@ function CharUpgrade ({ ...character }) {
             material.amount - character.skills[i - 1][j][1]
           )
         }
+        trigger(material.name, material.amount >= 0 ? material.amount : 0)
       }
     }
     for (
@@ -628,6 +658,7 @@ function CharUpgrade ({ ...character }) {
         let material = materials.find(m => m.name === character.ecb[i][j][0])
         material.needed -= character.ecb[i][j][1]
         material.amount -= character.ecb[i][j][1]
+        trigger(material.name, material.amount >= 0 ? material.amount : 0)
       }
     }
 
@@ -657,13 +688,9 @@ function CharUpgrade ({ ...character }) {
       }
     })
 
-    console.log(character.name)
-    console.log(upgrade)
-    console.log(charData)
     localStorage.setItem('upgrade', JSON.stringify(upgrades))
     setUpgrade(upgrades)
-    console.log(upgrades)
-    window.location.reload()
+    // window.location.reload()
   }
 
   let color =
