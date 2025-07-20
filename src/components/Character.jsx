@@ -5,9 +5,6 @@ import { UpgradeContext } from './Upgrading'
 import { Upgrade } from './Upgrade'
 
 function Character ({ ...character }) {
-  const [activeTabState, setActiveTab] = useState(1)
-  console.log(activeTabState)
-
   const [charData, setCharData] = useState({
     currPhase: 0,
     goalPhase: 0,

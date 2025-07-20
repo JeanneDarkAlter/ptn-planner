@@ -57,8 +57,6 @@ function Upgrading () {
         }
       }
 
-      console.log(materials)
-
       for (let i = 0; i < materials.length; i++) {
         let keys = Object.keys(mats[i])
         for (let j = 0; j < keys.length; j++) {
@@ -316,12 +314,10 @@ function Upgrading () {
 
   const setOtherValue = (targetId, newValue) => {
     const ref = materialsRefs.current[targetId]
-    console.log(targetId)
     if (ref && ref.setValue) {
       ref.setValue(newValue)
     }
   }
-  console.log(localStorage.getItem('upgrade'))
   const updateVersion = () => {
     localStorage.setItem('VERSION', VERSION)
 
@@ -462,10 +458,7 @@ function Upgrading () {
     }
 
     localStorage.setItem('materials', materials)
-    console.log(materials)
-    console.log(JSON.parse(localStorage.getItem('materials')))
-
-    // window.location.reload()
+    window.location.reload()
   }
 
   return (
