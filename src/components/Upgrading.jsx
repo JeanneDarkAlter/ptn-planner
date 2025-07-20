@@ -323,7 +323,7 @@ function Upgrading () {
   }
   console.log(localStorage.getItem('upgrade'))
   const updateVersion = () => {
-    // localStorage.setItem('VERSION', VERSION)
+    localStorage.setItem('VERSION', VERSION)
 
     let u = JSON.parse(localStorage.getItem('upgrade'))
     for (let j = 0; j < u.length; j++) {
