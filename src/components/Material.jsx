@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfo, faToolbox } from '@fortawesome/free-solid-svg-icons'
 import { useContext, useState, useImperativeHandle, forwardRef } from 'react'
 import { UpgradeContext } from './Upgrading'
+import characters from '../json/characters.json'
 import { autoPlacement, computePosition } from '@floating-ui/dom'
 import {
   useFloating,
@@ -17,6 +18,7 @@ import {
   useInteractions,
   safePolygon
 } from '@floating-ui/react'
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser'
 
 const Material = forwardRef(({ trigger, ...material }, ref) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -255,6 +257,15 @@ const Material = forwardRef(({ trigger, ...material }, ref) => {
     setMaterials(materials)
   }
 
+  let for_characters = []
+  if (material.characters !== undefined) {
+    for (let i = 0; i < material.characters.length; i++) {
+      for_characters.push(
+        characters.find(char => char.name === material.characters[i].name)
+      )
+    }
+  }
+
   return (
     <div
       className='mat'
@@ -294,6 +305,20 @@ const Material = forwardRef(({ trigger, ...material }, ref) => {
             {chestAmount <= 0 && <p> You can't open any chests.</p>}
           </div>
         )}
+        {/* {material.characters !== undefined && (
+          <button
+            style={{
+              background: 'none',
+              border: 'none',
+              position: 'absolute',
+              top: material.chests !== undefined ? '35px' : '10px',
+              right: '10px'
+            }}
+          >
+            <FontAwesomeIcon icon={faUser} style={{ color: '#ffffff' }} />
+          </button>
+        )} */}
+
         {/* <span className='tooltip'>{calcChests()}</span> */}
       </div>
 
@@ -317,6 +342,12 @@ const Material = forwardRef(({ trigger, ...material }, ref) => {
         onChange={handleAmountChange}
         onBlur={onBluring}
       />
+      {/* {for_characters.length > 0
+        ? for_characters.map((char, index) => (
+            // <li key={index}>{char.id}</li>
+            <img src={char.img} alt='' width={30} />
+          ))
+        : ''} */}
     </div>
   )
 })

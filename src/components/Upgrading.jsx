@@ -17,7 +17,8 @@ import mats from '../json/materials.json'
 export const UpgradeContext = createContext(null)
 
 function Upgrading () {
-  // localStorage.clear()
+  const VERSION = '1.0'
+
   const getMats = () => {
     if (localStorage.getItem('materials') === null) {
       let materials = []
@@ -56,11 +57,13 @@ function Upgrading () {
         }
       }
 
+      console.log(materials)
+
       for (let i = 0; i < materials.length; i++) {
         let keys = Object.keys(mats[i])
-        for (let j = 0; j < keys; j++) {
+        for (let j = 0; j < keys.length; j++) {
           if (!materials[i].hasOwnProperty(keys[j])) {
-            materials[i].keys[j] = keys[j].value
+            materials[i][keys[j]] = mats[i][keys[j]]
           }
         }
       }
@@ -318,10 +321,188 @@ function Upgrading () {
       ref.setValue(newValue)
     }
   }
+  console.log(localStorage.getItem('upgrade'))
+  const updateVersion = () => {
+    // localStorage.setItem('VERSION', VERSION)
+
+    let u = JSON.parse(localStorage.getItem('upgrade'))
+    for (let j = 0; j < u.length; j++) {
+      let c = characters.find(ch => ch.id === u[j].id)
+
+      for (
+        let i = parseInt(u[j].currPhase);
+        i < parseInt(u[j].goalPhase);
+        i++
+      ) {
+        for (let j = 0; j < c.phases[i].length; j++) {
+          let material = materials.find(m => m.name === c.phases[i][j][0])
+          material.needed += c.phases[i][j][1]
+
+          const index = material.characters.findIndex(
+            char => char.name === c.name
+          )
+          if (index !== -1) {
+            material.characters[index].amount += c.phases[i][j][1]
+          } else {
+            material.characters.push({
+              name: c.name,
+              amount: c.phases[i][j][1]
+            })
+          }
+        }
+      }
+      for (
+        let i = parseInt(u[j].currSkill1);
+        i < parseInt(u[j].goalSkill1);
+        i++
+      ) {
+        for (let j = 0; j < c.skills[i - 1].length; j++) {
+          let material = materials.find(m => m.name === c.skills[i - 1][j][0])
+          material.needed += c.skills[i - 1][j][1]
+
+          const index = material.characters.findIndex(
+            char => char.name === c.name
+          )
+          if (index !== -1) {
+            material.characters[index].amount += c.skills[i - 1][j][1]
+          } else {
+            material.characters.push({
+              name: c.name,
+              amount: c.skills[i - 1][j][1]
+            })
+          }
+        }
+      }
+      for (
+        let i = parseInt(u[j].currSkill2);
+        i < parseInt(u[j].goalSkill2);
+        i++
+      ) {
+        for (let j = 0; j < c.skills[i - 1].length; j++) {
+          let material = materials.find(m => m.name === c.skills[i - 1][j][0])
+          material.needed += c.skills[i - 1][j][1]
+
+          const index = material.characters.findIndex(
+            char => char.name === c.name
+          )
+          if (index !== -1) {
+            material.characters[index].amount += c.skills[i - 1][j][1]
+          } else {
+            material.characters.push({
+              name: c.name,
+              amount: c.skills[i - 1][j][1]
+            })
+          }
+        }
+      }
+      for (
+        let i = parseInt(u[j].currSkill3);
+        i < parseInt(u[j].goalSkill3);
+        i++
+      ) {
+        for (let j = 0; j < c.skills[i - 1].length; j++) {
+          let material = materials.find(m => m.name === c.skills[i - 1][j][0])
+          material.needed += c.skills[i - 1][j][1]
+
+          const index = material.characters.findIndex(
+            char => char.name === c.name
+          )
+          if (index !== -1) {
+            material.characters[index].amount += c.skills[i - 1][j][1]
+          } else {
+            material.characters.push({
+              name: c.name,
+              amount: c.skills[i - 1][j][1]
+            })
+          }
+        }
+      }
+      for (
+        let i = parseInt(u[j].currSkill4);
+        i < parseInt(u[j].goalSkill4);
+        i++
+      ) {
+        for (let j = 0; j < c.skills[i - 1].length; j++) {
+          let material = materials.find(m => m.name === c.skills[i - 1][j][0])
+          material.needed += c.skills[i - 1][j][1]
+
+          const index = material.characters.findIndex(
+            char => char.name === c.name
+          )
+          if (index !== -1) {
+            material.characters[index].amount += c.skills[i - 1][j][1]
+          } else {
+            material.characters.push({
+              name: c.name,
+              amount: c.skills[i - 1][j][1]
+            })
+          }
+        }
+      }
+      for (let i = parseInt(u[j].currECB); i < parseInt(u[j].goalECB); i++) {
+        for (let j = 0; j < c.ecb[i].length; j++) {
+          let material = materials.find(m => m.name === c.ecb[i][j][0])
+          material.needed += c.ecb[i][j][1]
+
+          const index = material.characters.findIndex(
+            char => char.name === c.name
+          )
+          if (index !== -1) {
+            material.characters[index].amount += c.ecb[i][j][1]
+          } else {
+            material.characters.push({
+              name: c.name,
+              amount: c.ecb[i][j][1]
+            })
+          }
+        }
+      }
+    }
+
+    localStorage.setItem('materials', materials)
+    console.log(materials)
+    console.log(JSON.parse(localStorage.getItem('materials')))
+
+    // window.location.reload()
+  }
 
   return (
     <div className='container'>
       {/*NOTE: выбор персонажей для прокачки */}
+      {localStorage.getItem('VERSION') !== VERSION && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            backgroundColor: 'white',
+            color: '#333',
+            padding: '12px 16px',
+            textAlign: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+            boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+            animation: 'slideDown 0.3s ease-out',
+            borderRadius: '10px'
+          }}
+        >
+          <p>Доступна новая версия: </p>
+          <button
+            style={{
+              backgroundColor: '#333',
+              color: '#fff',
+              border: 'none',
+              padding: '6px 12px',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+            onClick={() => updateVersion()}
+          >
+            Обновить страницу
+          </button>
+        </div>
+      )}
       <Popup
         trigger={
           <button

@@ -1,6 +1,20 @@
 import Popup from 'reactjs-popup'
 import { useContext, useState } from 'react'
 import { UpgradeContext } from './Upgrading'
+import { autoPlacement, computePosition } from '@floating-ui/dom'
+import {
+  useFloating,
+  autoUpdate,
+  offset,
+  flip,
+  shift,
+  useHover,
+  useFocus,
+  useDismiss,
+  useRole,
+  useInteractions,
+  safePolygon
+} from '@floating-ui/react'
 
 function CharUpgrade ({ trigger, ...character }) {
   //NOTE: new version
@@ -22,8 +36,6 @@ function CharUpgrade ({ trigger, ...character }) {
     goalECB: upgrade.goalECB
   })
 
-  console.log(charData)
-
   //NOTE: old version
   /*const [charData, setCharData] = useState({
         currPhase: character.currPhase,
@@ -38,10 +50,52 @@ function CharUpgrade ({ trigger, ...character }) {
         goalSkill4: character.goalSkill4,
     });*/
 
+  const [isOpen, setIsOpen] = useState(false)
+
+  const { refs, floatingStyles, context } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [offset(10), autoPlacement(), shift()],
+    whileElementsMounted: autoUpdate
+  })
+  const hover = useHover(context, { handleClose: safePolygon() })
+  const focus = useFocus(context)
+  const dismiss = useDismiss(context)
+  const role = useRole(context, {
+    role: 'label'
+  })
+
+  // Merge all the interactions into prop getters
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    hover,
+    focus,
+    dismiss,
+    role
+  ])
+
   // const materials = useContext(UpgradeContext).materials
   const materials = JSON.parse(localStorage.getItem('materials'))
   const setMaterials = useContext(UpgradeContext).setMaterials
   const setUpgrade = useContext(UpgradeContext).setUpgrade
+
+  let for_character = []
+  for (let i = 0; i < materials.length; i++) {
+    if (
+      materials[i].characters !== undefined &&
+      materials[i].characters.find(char => char.name === character.name) !==
+        undefined
+    ) {
+      for_character.push({
+        name: materials[i].name,
+        img: materials[i].img,
+        needed: materials[i].characters.find(
+          char => char.name === character.name
+        ).amount,
+        amount: materials[i].amount,
+        canCraft: materials[i].canCraft
+      })
+    }
+  }
 
   const phasesDict = {
     0: '1\u25C7\u25C7\u25C7',
@@ -142,10 +196,6 @@ function CharUpgrade ({ trigger, ...character }) {
   }
 
   const changeChar = () => {
-    console.log('upgrade')
-    console.log(upgrade)
-    console.log(charData)
-    // console.log(JSON.parse(localStorage.getItem("materials")));
     // NOTE: upgrade == character
     for (
       let i = parseInt(upgrade.currPhase);
@@ -155,6 +205,13 @@ function CharUpgrade ({ trigger, ...character }) {
       for (let j = 0; j < character.phases[i].length; j++) {
         let material = materials.find(m => m.name === character.phases[i][j][0])
         material.needed -= character.phases[i][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount -= character.phases[i][j][1]
+        }
       }
     }
     for (
@@ -167,6 +224,13 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed -= character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount -= character.skills[i - 1][j][1]
+        }
       }
     }
     for (
@@ -179,6 +243,13 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed -= character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount -= character.skills[i - 1][j][1]
+        }
       }
     }
     for (
@@ -191,6 +262,13 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed -= character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount -= character.skills[i - 1][j][1]
+        }
       }
     }
     for (
@@ -203,6 +281,13 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed -= character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount -= character.skills[i - 1][j][1]
+        }
       }
     }
     for (
@@ -213,6 +298,13 @@ function CharUpgrade ({ trigger, ...character }) {
       for (let j = 0; j < character.ecb[i].length; j++) {
         let material = materials.find(m => m.name === character.ecb[i][j][0])
         material.needed -= character.ecb[i][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount -= character.ecb[i][j][1]
+        }
       }
     }
 
@@ -224,6 +316,18 @@ function CharUpgrade ({ trigger, ...character }) {
       for (let j = 0; j < character.phases[i].length; j++) {
         let material = materials.find(m => m.name === character.phases[i][j][0])
         material.needed += character.phases[i][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.phases[i][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.phases[i][j][1]
+          })
+        }
       }
     }
     for (
@@ -236,6 +340,18 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed += character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.skills[i - 1][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.skills[i - 1][j][1]
+          })
+        }
       }
     }
     for (
@@ -248,6 +364,18 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed += character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.skills[i - 1][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.skills[i - 1][j][1]
+          })
+        }
       }
     }
     for (
@@ -260,6 +388,18 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed += character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.skills[i - 1][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.skills[i - 1][j][1]
+          })
+        }
       }
     }
     for (
@@ -272,6 +412,18 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed += character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.skills[i - 1][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.skills[i - 1][j][1]
+          })
+        }
       }
     }
     for (
@@ -282,6 +434,18 @@ function CharUpgrade ({ trigger, ...character }) {
       for (let j = 0; j < character.ecb[i].length; j++) {
         let material = materials.find(m => m.name === character.ecb[i][j][0])
         material.needed += character.ecb[i][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.ecb[i][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.ecb[i][j][1]
+          })
+        }
       }
     }
     localStorage.setItem('materials', JSON.stringify(materials))
@@ -336,6 +500,13 @@ function CharUpgrade ({ trigger, ...character }) {
       for (let j = 0; j < character.phases[i].length; j++) {
         let material = materials.find(m => m.name === character.phases[i][j][0])
         material.needed -= character.phases[i][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters.splice(index, 1)
+        }
       }
     }
     for (
@@ -348,6 +519,13 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed -= character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters.splice(index, 1)
+        }
       }
     }
     for (
@@ -360,6 +538,13 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed -= character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters.splice(index, 1)
+        }
       }
     }
     for (
@@ -372,6 +557,13 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed -= character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters.splice(index, 1)
+        }
       }
     }
     for (
@@ -384,6 +576,13 @@ function CharUpgrade ({ trigger, ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed -= character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters.splice(index, 1)
+        }
       }
     }
     for (
@@ -394,6 +593,13 @@ function CharUpgrade ({ trigger, ...character }) {
       for (let j = 0; j < character.ecb[i].length; j++) {
         let material = materials.find(m => m.name === character.ecb[i][j][0])
         material.needed -= character.ecb[i][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters.splice(index, 1)
+        }
       }
     }
 
@@ -690,7 +896,6 @@ function CharUpgrade ({ trigger, ...character }) {
 
     localStorage.setItem('upgrade', JSON.stringify(upgrades))
     setUpgrade(upgrades)
-    // window.location.reload()
   }
 
   let color =
@@ -704,55 +909,94 @@ function CharUpgrade ({ trigger, ...character }) {
     <div style={{ display: 'flex' }}>
       <Popup
         trigger={
-          <button
-            id={character.name}
-            style={{
-              backgroundColor: 'black',
-              border: '2px solid ' + check()
-            }}
-          >
-            <div
-              height={100}
+          <div>
+            <button
+              id={character.name}
               style={{
-                display: 'block',
-                border: '2px solid ' + color,
-                backgroundColor: color,
-                marginTop: 'auto',
-                marginBottom: 'auto',
-                marginLeft: '5px'
+                backgroundColor: 'black',
+                border: '2px solid ' + check()
               }}
+              ref={refs.setReference}
+              {...getReferenceProps()}
             >
-              <img src={character.img} alt='' height={100} />
-              <p style={{ margin: 0 }}>{character.name}</p>
-            </div>
-            <div
-              style={{
-                color: 'white',
-                marginRight: '10px',
-                marginLeft: '10px'
-              }}
-            >
-              <p>
-                {phasesDict[upgrade.currPhase]} {'>>'}{' '}
-                {phasesDict[upgrade.goalPhase]}
-              </p>
-              <p>
-                ECB: {upgrade.currECB} {'>>'} {upgrade.goalECB}
-              </p>
-              <p>
-                N: {upgrade.currSkill1} {'>>'} {upgrade.goalSkill1}
-              </p>
-              <p>
-                U: {upgrade.currSkill2} {'>>'} {upgrade.goalSkill2}
-              </p>
-              <p>
-                P1: {upgrade.currSkill3} {'>>'} {upgrade.goalSkill3}
-              </p>
-              <p>
-                P2: {upgrade.currSkill4} {'>>'} {upgrade.goalSkill4}
-              </p>
-            </div>
-          </button>
+              <div
+                height={100}
+                style={{
+                  display: 'block',
+                  border: '2px solid ' + color,
+                  backgroundColor: color,
+                  marginTop: 'auto',
+                  marginBottom: 'auto',
+                  marginLeft: '5px'
+                }}
+              >
+                <img src={character.img} alt='' height={100} />
+                <p style={{ margin: 0 }}>{character.name}</p>
+              </div>
+
+              <div
+                style={{
+                  color: 'white',
+                  marginRight: '10px',
+                  marginLeft: '10px'
+                }}
+              >
+                <p>
+                  {phasesDict[upgrade.currPhase]} {'>>'}{' '}
+                  {phasesDict[upgrade.goalPhase]}
+                </p>
+                <p>
+                  ECB: {upgrade.currECB} {'>>'} {upgrade.goalECB}
+                </p>
+                <p>
+                  N: {upgrade.currSkill1} {'>>'} {upgrade.goalSkill1}
+                </p>
+                <p>
+                  U: {upgrade.currSkill2} {'>>'} {upgrade.goalSkill2}
+                </p>
+                <p>
+                  P1: {upgrade.currSkill3} {'>>'} {upgrade.goalSkill3}
+                </p>
+                <p>
+                  P2: {upgrade.currSkill4} {'>>'} {upgrade.goalSkill4}
+                </p>
+              </div>
+            </button>
+            {isOpen && (
+              <div
+                ref={refs.setFloating}
+                style={{
+                  ...floatingStyles,
+                  backgroundColor: 'white',
+                  color: 'black',
+                  padding: '10px',
+                  borderRadius: '25px',
+                  zIndex: 2
+                }}
+                {...getFloatingProps()}
+              >
+                {for_character.map(
+                  (char, index) =>
+                    char.needed > 0 && (
+                      <li key={index} style={{ listStyleType: 'none' }}>
+                        <img src={char.img} alt='' height={23} /> {char.needed}{' '}
+                        {char.canCraft !== undefined ? (
+                          char.amount + char.canCraft >= char.needed ? (
+                            <span> ✅</span>
+                          ) : (
+                            <span> ❌</span>
+                          )
+                        ) : char.amount > char.needed ? (
+                          <span> ✅</span>
+                        ) : (
+                          <span> ❌</span>
+                        )}
+                      </li>
+                    )
+                )}
+              </div>
+            )}
+          </div>
         }
         modal
         nested
@@ -888,37 +1132,6 @@ function CharUpgrade ({ trigger, ...character }) {
                       </label>
                     </p>
 
-                    <p>Ultimate</p>
-                    <p>
-                      <label htmlFor='currSkill2'>
-                        Current LVL:{' '}
-                        <input
-                          type='number'
-                          name='currSkill2'
-                          id='currSkill2'
-                          min='1'
-                          max='10'
-                          onChange={twoFunctions}
-                          defaultValue={upgrade.currSkill2}
-                        />
-                      </label>
-                    </p>
-                    <p>
-                      <label htmlFor='goalSkill2'>
-                        Goal LVL:{' '}
-                        <input
-                          type='number'
-                          name='goalSkill2'
-                          id='goalSkill2'
-                          min='1'
-                          max='10'
-                          onChange={twoFunctions}
-                          defaultValue={upgrade.goalSkill2}
-                        />
-                      </label>
-                    </p>
-                  </div>
-                  <div>
                     <p>Passive 1</p>
                     <p>
                       <label htmlFor='currSkill3'>
@@ -945,6 +1158,37 @@ function CharUpgrade ({ trigger, ...character }) {
                           max='10'
                           onChange={twoFunctions}
                           defaultValue={upgrade.goalSkill3}
+                        />
+                      </label>
+                    </p>
+                  </div>
+                  <div>
+                    <p>Ultimate</p>
+                    <p>
+                      <label htmlFor='currSkill2'>
+                        Current LVL:{' '}
+                        <input
+                          type='number'
+                          name='currSkill2'
+                          id='currSkill2'
+                          min='1'
+                          max='10'
+                          onChange={twoFunctions}
+                          defaultValue={upgrade.currSkill2}
+                        />
+                      </label>
+                    </p>
+                    <p>
+                      <label htmlFor='goalSkill2'>
+                        Goal LVL:{' '}
+                        <input
+                          type='number'
+                          name='goalSkill2'
+                          id='goalSkill2'
+                          min='1'
+                          max='10'
+                          onChange={twoFunctions}
+                          defaultValue={upgrade.goalSkill2}
                         />
                       </label>
                     </p>
@@ -1030,6 +1274,7 @@ function CharUpgrade ({ trigger, ...character }) {
             >
               Done
             </button>
+
             {/* <button onClick={() => close()}>Close</button> */}
           </div>
         )}

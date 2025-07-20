@@ -165,6 +165,18 @@ function Character ({ ...character }) {
       for (let j = 0; j < character.phases[i].length; j++) {
         let material = materials.find(m => m.name === character.phases[i][j][0])
         material.needed += character.phases[i][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.phases[i][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.phases[i][j][1]
+          })
+        }
       }
     }
     for (
@@ -177,6 +189,18 @@ function Character ({ ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed += character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.skills[i - 1][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.skills[i - 1][j][1]
+          })
+        }
       }
     }
     for (
@@ -189,6 +213,18 @@ function Character ({ ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed += character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.skills[i - 1][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.skills[i - 1][j][1]
+          })
+        }
       }
     }
     for (
@@ -201,6 +237,18 @@ function Character ({ ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed += character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.skills[i - 1][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.skills[i - 1][j][1]
+          })
+        }
       }
     }
     for (
@@ -213,6 +261,18 @@ function Character ({ ...character }) {
           m => m.name === character.skills[i - 1][j][0]
         )
         material.needed += character.skills[i - 1][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.skills[i - 1][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.skills[i - 1][j][1]
+          })
+        }
       }
     }
     for (
@@ -223,6 +283,18 @@ function Character ({ ...character }) {
       for (let j = 0; j < character.ecb[i].length; j++) {
         let material = materials.find(m => m.name === character.ecb[i][j][0])
         material.needed += character.ecb[i][j][1]
+
+        const index = material.characters.findIndex(
+          char => char.name === character.name
+        )
+        if (index !== -1) {
+          material.characters[index].amount += character.ecb[i][j][1]
+        } else {
+          material.characters.push({
+            name: character.name,
+            amount: character.ecb[i][j][1]
+          })
+        }
       }
     }
 
@@ -265,7 +337,9 @@ function Character ({ ...character }) {
                         </div> */}
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <fieldset>
-              <legend>Ascension & Skills</legend>
+              <legend>
+                <strong>Ascension & Skills</strong>
+              </legend>
               <p>
                 <label htmlFor='currPhase'>Current Phase: </label>
                 <select id='currPhase' name='currPhase' onChange={twoFunctions}>
@@ -371,38 +445,9 @@ function Character ({ ...character }) {
                     </label>
                   </p>
 
-                  <p>Ultimate</p>
                   <p>
-                    <label htmlFor='currSkill2'>
-                      Current LVL:{' '}
-                      <input
-                        type='number'
-                        name='currSkill2'
-                        id='currSkill2'
-                        min='1'
-                        max='10'
-                        onChange={twoFunctions}
-                        defaultValue={1}
-                      />
-                    </label>
+                    <strong>Passive 1</strong>
                   </p>
-                  <p>
-                    <label htmlFor='goalSkill2'>
-                      Goal LVL:{' '}
-                      <input
-                        type='number'
-                        name='goalSkill2'
-                        id='goalSkill2'
-                        min='1'
-                        max='10'
-                        onChange={twoFunctions}
-                        defaultValue={1}
-                      />
-                    </label>
-                  </p>
-                </div>
-                <div>
-                  <p>Passive 1</p>
                   <p>
                     <label htmlFor='currSkill3'>
                       Current LVL:{' '}
@@ -431,8 +476,43 @@ function Character ({ ...character }) {
                       />
                     </label>
                   </p>
+                </div>
+                <div>
+                  <p>
+                    <strong>Ultimate</strong>
+                  </p>
+                  <p>
+                    <label htmlFor='currSkill2'>
+                      Current LVL:{' '}
+                      <input
+                        type='number'
+                        name='currSkill2'
+                        id='currSkill2'
+                        min='1'
+                        max='10'
+                        onChange={twoFunctions}
+                        defaultValue={1}
+                      />
+                    </label>
+                  </p>
+                  <p>
+                    <label htmlFor='goalSkill2'>
+                      Goal LVL:{' '}
+                      <input
+                        type='number'
+                        name='goalSkill2'
+                        id='goalSkill2'
+                        min='1'
+                        max='10'
+                        onChange={twoFunctions}
+                        defaultValue={1}
+                      />
+                    </label>
+                  </p>
 
-                  <p>Passive 2</p>
+                  <p>
+                    <strong>Passive 2</strong>
+                  </p>
                   <p>
                     <label htmlFor='currSkill4'>
                       Current LVL:{' '}
@@ -465,7 +545,9 @@ function Character ({ ...character }) {
               </div>
             </fieldset>
             <fieldset>
-              <legend>Crimebrands</legend>
+              <legend>
+                <strong>Crimebrands</strong>
+              </legend>
               <p>
                 <label htmlFor='currECB'>Current ECB LVL: </label>
                 <select id='currECB' name='currECB' onChange={twoFunctions}>
